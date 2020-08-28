@@ -30,4 +30,31 @@ class Welcome extends CI_Controller {
 		//$this->load->view('welcome_message');
 		$this->load->view('my_page');
 	}
+
+	public function employe_profile(){
+
+		$this->load->view('employe_profile');
+
+	}
+
+
+	public function company_profile(){
+
+		$this->load->view('company_profile');
+
+	}
+
+
+	public function guest_profile(){
+
+		$this->load->view('guest_profile');
+
+	}
+
+
+	public function extras(){
+
+		$this->load->view('extras');
+
+	}
 }
