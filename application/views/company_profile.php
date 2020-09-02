@@ -459,7 +459,24 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
+            <?php          
+            if($this->session->flashdata('success')){
+            ?>
 
+            <div class="alert alert-success alert-block fade in">
+                <button data-dismiss="alert" class="close close-sm" type="button">
+                    <i class="icon-remove"></i>
+                </button>
+                    <strong>Success: </strong><?php echo $this->session->flashdata('success'); ?>
+            </div>
+            <?php } elseif($this->session->flashdata('error')) { ?>
+                <div class="alert alert-block alert-danger fade in">
+                    <button data-dismiss="alert" class="close close-sm" type="button">
+                        <i class="icon-remove"></i>
+                    </button>
+                    <strong>Ooops!!! </strong><?php echo $this->session->flashdata('error'); ?>
+                </div>
+            <?php } ?>
               <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
@@ -470,61 +487,61 @@
 
                             <!-----------CREATING COMPANY PROFILE Form Start------>
 
-                              <form class="form-horizontal" method="get">
+                              <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>CompanyController/add">
                                   <div class="form-group">
                                       <label class="col-sm-2 col-sm-2 control-label">name</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="name">
+                                          <input type="text" class="form-control" name="name" required>
                                       </div>
                                   </div>
                                    <div class="form-group">
                                       <label class="col-sm-2 col-sm-2 control-label">Company name</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="company_name">
+                                          <input type="text" class="form-control" name="company_name" required>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 col-sm-2 control-label">RUT</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="rut">
+                                          <input type="text" class="form-control" name="rut" required>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Country</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" class="form-control" name="country">
+                                            <input type="text" placeholder="Argentino" class="form-control" name="country" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Town</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="" class="form-control" name="town">
+                                            <input type="text" placeholder="" class="form-control" name="town" required>
                                         </div>
                                   </div>
                                     <div class="form-group">
                                       <label class="col-sm-2 control-label">Postal code</label>
                                         <div class="col-sm-10">
-                                            <input type="number" placeholder="" class="form-control" name="postal_code">
+                                            <input type="number" placeholder="" class="form-control" name="postal_code" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone 1</label>
                                        <div class="col-sm-10">
-                                          <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" name="telephone">
+                                          <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" name="telephone" required>
                                             <span class="help-inline">(999) 999-9999</span>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Contact in company</label>
                                        <div class="col-sm-10">
-                                          <select name="contact_in_company" class="form-control">
+                                          <select name="contact_in_company" class="form-control" required>
                                             <option value="0">Yes</option>
                                             <option value="1">No</option>
                                           </select>
                                         </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Name</label>
+                                      <label class="col-sm-2 control-label">Contact Name</label>
                                        <div class="col-sm-10">
                                           <input type="text" placeholder="John Doe"  class="form-control" name="contact_name">
                                         </div>
@@ -538,7 +555,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="johndoe@email.com"  class="form-control" name="contact_email">
+                                            <input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email">
                                         </div>
                                   </div>
                                   <div class="form-group">

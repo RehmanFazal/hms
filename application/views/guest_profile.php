@@ -11,23 +11,18 @@
     <title>Form Component</title>
 
     <!-- Bootstrap core CSS -->
-      <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet" />
-
-       <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
+   <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="<?php echo base_url(); ?>assets/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="<?php echo base_url(); ?>assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.carousel.css" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker.css" />
+
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet" />
-
-
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-datepicker/css/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-colorpicker/css/colorpicker.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/daterangepicker.css" />
+     <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet" />
 
 
 
@@ -453,6 +448,24 @@
       <section id="main-content">
           <section class="wrapper">
 
+            <?php                   
+            if($this->session->flashdata('success')){
+            ?>
+            <div class="alert alert-success alert-block fade in">
+                <button data-dismiss="alert" class="close close-sm" type="button">
+                    <i class="icon-remove"></i>
+                </button>
+                    <strong>Success: </strong><?php echo $this->session->flashdata('success'); ?>
+            </div>
+            <?php } elseif($this->session->flashdata('error')) { ?>
+                <div class="alert alert-block alert-danger fade in">
+                    <button data-dismiss="alert" class="close close-sm" type="button">
+                        <i class="icon-remove"></i>
+                    </button>
+                    <strong>Ooops!!! </strong><?php echo $this->session->flashdata('error'); ?>
+                </div>
+            <?php } ?>
+
               <div class="row">
                   <div class="col-lg-12">
                       <section class="panel">
@@ -463,30 +476,39 @@
 
                             <!-----------Guest Form Start------>
 
-                              <form class="form-horizontal" method="get">
+                              <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>GuestController/add">
                                   <div class="form-group">
                                       <label class="col-sm-2 col-sm-2 control-label">Name:(<span class="text-danger">*</span>)</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="guest_name">
+                                          <input type="text" class="form-control" name="guest_name" required>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 col-sm-2 control-label">Surname:(<span class="text-danger">*</span>)</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="guest_surname">
+                                          <input type="text" class="form-control" name="guest_surname" required>
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Sex</label>
+                                      <div class="col-lg-10">
+                                          <select class="form-control m-bot15" name="sex" required>
+                                              <option value="0">Male</option>
+                                              <option value="1">Female</option>
+                                          </select>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Date of birth:(<span class="text-danger">*</span>)</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="" data-mask="99/99/9999" class="form-control" name="guest_dob">
+                                            <input type="text" placeholder="" data-mask="99/99/9999" class="form-control" name="guest_dob" required>
                                               <span class="help-inline">dd/mm/yyyy</span>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Marital Status:(<span class="text-danger">*</span>)</label>
                                       <div class="col-lg-10">
-                                          <select class="form-control m-bot15" name="martial_status">
+                                          <select class="form-control m-bot15" name="martial_status" required>
                                               <option value="SINGLE">SINGLE</option>
                                               <option value="MARRIED">MARRIED</option>
                                               <option value="DIVORCED">DIVORCED</option>
@@ -498,13 +520,13 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Nationality(<span class="text-danger">*</span>)</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" class="form-control" name="nationality">
+                                            <input type="text" placeholder="Argentino" class="form-control" name="nationality" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Document Type:(<span class="text-danger">*</span>)</label>
                                       <div class="col-lg-10">
-                                          <select class="form-control m-bot15" name="guest_doc_type">
+                                          <select class="form-control m-bot15" name="guest_doc_type" required>
                                               <option value="CI">CI</option>
                                               <option value="DCI PASSPORT">DCI PASSPORT</option>
                                           </select>
@@ -513,58 +535,58 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Number:(<span class="text-danger">*</span>)</label>
                                           <div class="col-sm-10">
-                                              <input type="text" placeholder="" data-mask="99-9999999" class="form-control" name="number">
-                                              <span class="help-inline">99-9999999</span>
+                                              <input type="text" placeholder="" data-mask="99999999999" class="form-control" name="number" required>
+                                              <span class="help-inline">99999999999</span>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Country of expedition:(<span class="text-danger">*</span>)</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" class="form-control" name="country_expedition">
+                                            <input type="text" placeholder="Argentino" class="form-control" name="country_expedition" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">City:(<span class="text-danger">*</span>)</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="New York" class="form-control" name="city">
+                                            <input type="text" placeholder="New York" class="form-control" name="city" required>
                                         </div>
                                   </div>
                                    <div class="form-group">
                                       <label class="col-sm-2 control-label">Address:(<span class="text-danger">*</span>)</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="address" rows="5"></textarea>
+                                            <textarea class="form-control" name="address" rows="5" required></textarea>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone 1</label>
                                        <div class="col-sm-10">
-                                          <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" name="telephone_1">
-                                            <span class="help-inline">(999) 999-9999</span>
+                                          <input type="number" placeholder=""  class="form-control" name="telephone_1" required>
+                                            <span class="help-inline">99999999999</span>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone 2</label>
                                        <div class="col-sm-10">
-                                          <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" name="telephone_2">
-                                            <span class="help-inline">(999) 999-9999</span>
+                                          <input type="number" placeholder="" class="form-control" name="telephone_2" required>
+                                            <span class="help-inline">99999999999</span>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input type="Email" placeholder="johndoe@email.com"  class="form-control" name="email">
+                                            <input type="Email" placeholder="johndoe@email.com"  class="form-control" name="email" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Company</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Microsoft"  class="form-control" name="company">
+                                            <input type="text" placeholder="Microsoft"  class="form-control" name="company" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Position</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Software Engineer"  class="form-control" name="position">
+                                            <input type="text" placeholder="Software Engineer"  class="form-control" name="position" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -582,9 +604,10 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Observations</label>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control" name="observations" rows="5">Somewhat medium short</textarea>
+                                             <textarea class="form-control" cols="5" name="observations"></textarea>
                                         </div>
                                   </div>
+                                 
                                 <div class="form-group">
                                     <div class="col-sm-2"></div>
                                     <div class="col-sm-10">
@@ -616,37 +639,41 @@
       <!--footer end-->
   </section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
- <script href="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-    <script href="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-    <script href="<?php echo base_url(); ?>assets/js/jquery.scrollTo.min.js"></script>
-    <script href="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
-    <script href="<?php echo base_url(); ?>assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-    <script class="include" type="text/javascript" href="<?php echo base_url(); ?>assets/js/jquery.dcjqaccordion.2.7.js"></script>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/jquery.scrollTo.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+
+  <script src="<?php echo base_url(); ?>assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+  <script class="include" type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.dcjqaccordion.2.7.js"></script>
 
   <!--custom switch-->
-  <script href="<?php echo base_url(); ?>assets/js/bootstrap-switch.js"></script>
+  <script src="<?php echo base_url(); ?><?php echo base_url(); ?>assets/js/bootstrap-switch.js"></script>
   <!--custom tagsinput-->
-  <script href="<?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script>
+  <script src="<?php echo base_url(); ?><?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script>
   <!--custom checkbox & radio-->
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/js/ga.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ga.js"></script>
 
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/ckeditor/ckeditor.js"></script>
 
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-  <script href="<?php echo base_url(); ?>assets/js/respond.min.js" ></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/respond.min.js" ></script>
 
 
   <!--common script for all pages-->
-    <script href="<?php echo base_url(); ?>assets/js/common-scripts.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/common-scripts.js"></script>
 
   <!--script for this page-->
-  <script href="<?php echo base_url(); ?>assets/js/form-component.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/form-component.js"></script>
+
+
+  <!-- <script type="text/javascript"></script> -->
 
   </body>
 </html>
