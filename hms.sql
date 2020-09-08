@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2020 at 09:01 PM
+-- Generation Time: Sep 08, 2020 at 06:57 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -62,13 +62,17 @@ CREATE TABLE `group_permission` (
 --
 
 INSERT INTO `group_permission` (`group_id`, `perm_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
 (2, 2),
 (2, 3),
-(2, 1);
+(2, 1),
+(3, 4),
+(3, 3),
+(4, 2),
+(4, 5),
+(1, 2),
+(1, 4),
+(1, 3),
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -193,14 +197,29 @@ INSERT INTO `subpermissions` (`id`, `sub_permission`, `sub_perm_label`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `role` tinyint(1) NOT NULL
+  `full_name` varchar(100) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `sector` int(11) NOT NULL,
+  `site_login` tinyint(1) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `full_name`, `user_name`, `password`, `sector`, `site_login`, `deleted`) VALUES
+(1, 'Admin', 'admin', '12345', 3, 1, 0),
+(2, 'Governor', 'governor', '123', 2, 1, 0),
+(3, 'Reception', 'reception', '123', 2, 1, 0),
+(4, 'Manager', 'manager', '123', 2, 1, 0),
+(5, 'Admin1', 'admin1', '12345', 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -211,14 +230,14 @@ CREATE TABLE `user` (
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `role` varchar(20) NOT NULL,
-  `Deleted` tinyint(4) NOT NULL DEFAULT '0'
+  `deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_role`
 --
 
-INSERT INTO `user_role` (`id`, `role`, `Deleted`) VALUES
+INSERT INTO `user_role` (`id`, `role`, `deleted`) VALUES
 (1, 'Admin', 0),
 (2, 'Reception', 0),
 (3, 'Management', 0),
@@ -253,9 +272,9 @@ ALTER TABLE `subpermissions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -293,10 +312,10 @@ ALTER TABLE `subpermissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_role`

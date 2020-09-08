@@ -7,7 +7,7 @@
 				<section class="panel">
 					<header class="panel-heading">Add Group</header>
                     <div class="panel-body">
-                    	<form method="POST" action="<?php echo site_url('group/GroupController/save'); ?>" >
+                    	<form method="POST" action="<?php echo site_url('group/GroupController/save'); ?>">
                     		<div class="form-group">
                             	<label for="role">Role Name</label>
                                 <input type="text" class="form-control" name="role" id="role"

@@ -303,16 +303,12 @@
 
                   <li class="sub-menu">
                       <a href="javascript:;" >
-                          <i class="icon-book"></i>
-                          <span>UI Elements</span>
+                          <i class="icon-user-md"></i>
+                          <span>Users</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="widget.html">Widget</a></li>
-                          <li><a  href="slider.html">Slider</a></li>
-                          <li><a  href="nestable.html">Nestable</a></li>
-                          <li><a  href="font_awesome.html">Font Awesome</a></li>
+                          <li><a  href="<?php echo site_url('user/UserController/add_user') ?>">Add User</a></li>
+                          <li><a  href="<?php echo site_url('user/UserController') ?>">View Users</a></li>
                       </ul>
                   </li>
 

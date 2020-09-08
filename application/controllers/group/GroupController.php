@@ -41,7 +41,7 @@ class GroupController extends CI_Controller {
 	public function save()
 	{
 		$this->data = $_REQUEST;
-		if(empty($this->data )) return false;
+		if(empty($this->data)) return false;
 
 		$required=array(
 			'role',

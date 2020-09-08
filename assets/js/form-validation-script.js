@@ -1,7 +1,7 @@
 var Script = function () {
 
     $.validator.setDefaults({
-        submitHandler: function() { alert("submitted!"); }
+        //submitHandler: function() { alert("submitted!"); }
     });
 
     $().ready(function() {
@@ -9,7 +9,7 @@ var Script = function () {
         $("#commentForm").validate();
 
         // validate signup form on keyup and submit
-        $("#signupForm").validate({
+        $("#addUserForm").validate({
             rules: {
                 firstname: "required",
                 lastname: "required",
