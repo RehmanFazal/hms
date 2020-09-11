@@ -106,6 +106,29 @@ class ItemModel extends CI_Model {
 		return $response;
   }
 
+  function userLogin($fields)
+  {
+  		$query = "
+			SELECT
+				users.id,
+				users.full_name,
+				users.user_name,
+				users.sector,
+				users.site_login
+			FROM
+				users
+			WHERE
+				users.user_name = '".$fields['user_name']."'
+				AND users.password = '".$fields['password']."'
+				AND users.site_login = 1
+				AND users.deleted = 0";
+
+		$query = $this->db->query($query);
+		$row = $query->row_array();
+
+		return $row;
+  }
+
 }
 
 ?>

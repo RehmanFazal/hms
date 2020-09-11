@@ -36,7 +36,13 @@ class UserController extends CI_Controller {
 	{
 		$this->data = $_REQUEST;
 
-		if(empty($this->data)) return false;
+		if(empty($this->data))
+		{
+			$this->error = "Invalid Request";
+			$this->session->set_flashdata('errors', $this->error);
+			$this->index();
+			return false;
+		}
 
 		$required = array(
 			'full_name',
@@ -50,7 +56,9 @@ class UserController extends CI_Controller {
 			if(empty($this->data[$field]))
 			{
 				$this->error="\n Required fields are missing!";
-				$this->error_developer=" \n field '$field' missing!";
+				$this->error.=" \n field '$field' missing!";
+				$this->session->set_flashdata('errors', $this->error);
+				$this->index();
 				return false;
 			}
 		}
