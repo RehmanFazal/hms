@@ -109,7 +109,7 @@ class ItemModel extends CI_Model {
 				LEFT JOIN group_permission ON group_permission.group_id = user_role.id
 				LEFT JOIN permissions ON group_permission.perm_id = permissions.id
 				WHERE
-				   user_role.Deleted = 0
+				   user_role.deleted = 0
 				GROUP BY
 					user_role.id
 				ORDER BY
@@ -172,7 +172,7 @@ class ItemModel extends CI_Model {
 		return $query;
   }
 
-  public function executeQuery($query1)
+  function executeQuery($query1)
   {
   		$result = array();
   		$query = $this->db->query($query1);
@@ -182,5 +182,6 @@ class ItemModel extends CI_Model {
   		return $result;
   }
 
-
 }
+
+?>

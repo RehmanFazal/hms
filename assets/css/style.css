@@ -9,7 +9,7 @@ Website: http://thevectorlab.net/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 
 body {
-    color: #797979;
+    color: #000;
     background: #f1f2f7;
     font-family: 'Open Sans', sans-serif;
     padding: 0px !important;
@@ -3067,7 +3067,7 @@ input:focus:invalid:focus, textarea:focus:invalid:focus, select:focus:invalid:fo
     border-color: #B94A48 !important;
 }
 
-#signupForm label.error {
+#addUserForm label.error {
     display: inline;
     margin:5px 0px;
     width: auto;

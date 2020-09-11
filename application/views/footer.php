@@ -16,6 +16,9 @@
     <!--common script for all pages-->
     <script src="<?php echo base_url(); ?>assets/js/common-scripts.js"></script>
 
+	<script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js" type="text/javascript" ></script>
+    <script src="<?php echo base_url(); ?>assets/js/form-validation-script.js"></script>
+
     <!--script for this page-->
     <script src="<?php echo base_url(); ?>assets/js/sparkline-chart.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/easy-pie-chart.js"></script>
