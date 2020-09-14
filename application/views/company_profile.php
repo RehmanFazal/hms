@@ -34,6 +34,24 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-datepicker/css/datepicker.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/daterangepicker.css" />
+    <style type="text/css">
+.country_dropdown {
+    /* display: none; */
+    z-index: 999999999999;
+    position: absolute;
+    background-color: #fff;
+    height: auto;
+    max-width: 400px;
+    width: 100%;
+    /*padding: 10px 30px;*/
+}
+
+.country_dropdown li:hover {
+    background-color: #7e7c7c;
+    color: #fff;
+    padding: 5px 5px;
+}
+    </style>
 
 
 
@@ -478,7 +496,7 @@
                 </div>
             <?php } ?>
               <div class="row">
-                  <div class="col-lg-12">
+                  <div class="col-lg-8 col-lg-offset-2">
                       <section class="panel">
                               <header class="panel-heading">
                                  CREATING COMPANY PROFILE
@@ -509,9 +527,20 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Country</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" class="form-control" name="country" required>
+                                            <input type="text" placeholder="Argentino" id="country_select" class="form-control" name="country" required>
                                         </div>
                                   </div>
+                                  <div class="form-group">
+                                     <label class="col-sm-2 control-label"></label>
+                                     <div class="col-sm-10">
+                                        <div class="country_dropdown">
+                                          <ul>
+                                            
+                                          </ul>
+                                        </div>
+                                     </div>
+                                  </div>
+                                 
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Town</label>
                                         <div class="col-sm-10">
@@ -622,6 +651,8 @@
 
   <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
   <script href="<?php echo base_url(); ?>assets/js/respond.min.js" ></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="http://localhost/survey-manage/assets/plugins/jQuery/jquery-1.12.4.min.js"></script>
 
 
   <!--common script for all pages-->
@@ -629,6 +660,71 @@
 
   <!--script for this page-->
   <script href="<?php echo base_url(); ?>assets/js/form-component.js"></script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      $('#country_select').keyup(function(){
+        
+          var txt=$(this).val();
+         
+
+          if(txt==''){
+
+             $('.country_dropdown ul').html('');
+
+          }
+          else{
+
+              $.ajax({
+                    
+                  url:"<?php echo base_url(); ?>country/CountryController/select_country",
+                  method:"POST",
+                  data:{search:txt},
+                  dataType:"text",
+                  success:function(data){
+
+                      $('.country_dropdown ul').html(data);
+
+                      $('.country_dropdown ul li').css('cursor','pointer');
+
+                      $('.country_dropdown ul li').click(function(){
+
+                          var country_value=$(this).attr('data_id');
+
+                          $('#country_select').val(country_value);
+
+                          var get_value=$('#country_select').val();
+
+                          if (get_value){
+
+                             $('.country_dropdown').hide();
+
+                          }
+                          else{
+
+                            $('.country_dropdown').show();
+
+                          }
+
+                          //$('.country_dropdown').html('');
+
+
+                    });
+
+                }
+                                
+           }); 
+
+
+
+          }
+
+    });
+
+});
+  </script>
 
   </body>
 </html>

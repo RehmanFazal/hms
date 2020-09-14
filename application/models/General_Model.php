@@ -16,6 +16,23 @@ class General_Model extends CI_Model{
 	}
 
 
+	public function update($data,$id,$tbl_name){
+
+        $sql=null;
+
+      
+        foreach ($data as $key => $value) {
+             $sql.=$key."="."'".$value."'".","; 
+        }
+         
+        $sql_query=rtrim($sql,",");
+        $query="UPDATE ".$tbl_name." SET ".$sql_query.' WHERE id='.$id;
+        $query_run=$this->db->query($query);
+        $result=$this->db->affected_rows();
+        return $result;
+    }
+
+
 }
 
 

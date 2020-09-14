@@ -8,32 +8,34 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Hotel Management System</title>
+    <title>Form Component</title>
 
-   <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/css/bootstrap-reset.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
-    <link href="<?php echo base_url(); ?>assets/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-datepicker/css/datepicker.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/css/colorpicker.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker.css" />
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
-     <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet" />
+
+       <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="<?php echo base_url(); ?>assets/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.carousel.css" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet" />
 
 
-
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-
-       <style type="text/css">
-      .country_dropdown {
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/daterangepicker.css" />
+    <style type="text/css">
+.country_dropdown {
     /* display: none; */
     z-index: 999999999999;
     position: absolute;
@@ -50,6 +52,16 @@
     padding: 5px 5px;
 }
     </style>
+
+
+
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script href="<?php echo base_url(); ?>/html5shiv.js"></script>
+      <script href="<?php echo base_url(); ?>/respond.min.js"></script>
+    <![endif]-->
 
 
   </head>
@@ -164,7 +176,7 @@
                       </li>
                       <li>
                           <a href="#">
-                              <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
+                              <span class="photo"><img alt="avatar" href="<?php echo base_url(); ?>./img/avatar-mini.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Jonathan Smith</span>
                                     <span class="time">Just now</span>
@@ -176,7 +188,7 @@
                       </li>
                       <li>
                           <a href="#">
-                              <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
+                              <span class="photo"><img alt="avatar" href="<?php echo base_url(); ?>./img/avatar-mini2.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Jhon Doe</span>
                                     <span class="time">10 mins</span>
@@ -188,7 +200,7 @@
                       </li>
                       <li>
                           <a href="#">
-                              <span class="photo"><img alt="avatar" src="./img/avatar-mini3.jpg"></span>
+                              <span class="photo"><img alt="avatar" href="<?php echo base_url(); ?>./img/avatar-mini3.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Jason Stathum</span>
                                     <span class="time">3 hrs</span>
@@ -200,7 +212,7 @@
                       </li>
                       <li>
                           <a href="#">
-                              <span class="photo"><img alt="avatar" src="./img/avatar-mini4.jpg"></span>
+                              <span class="photo"><img alt="avatar" href="<?php echo base_url(); ?>./img/avatar-mini4.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Jondi Rose</span>
                                     <span class="time">Just now</span>
@@ -279,7 +291,7 @@
                   <!-- user login dropdown start-->
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                          <img alt="" src="img/avatar1_small.jpg">
+                          <img alt="" href="<?php echo base_url(); ?>img/avatar1_small.jpg">
                           <span class="username">Jhon Doue</span>
                           <b class="caret"></b>
                       </a>
@@ -465,8 +477,7 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
-            <?php 
-                              
+            <?php          
             if($this->session->flashdata('success')){
             ?>
 
@@ -485,141 +496,107 @@
                 </div>
             <?php } ?>
 
+            <?php //print_r($fields); ?>
               <div class="row">
                   <div class="col-lg-8 col-lg-offset-2">
                       <section class="panel">
                               <header class="panel-heading">
-                                  CREATION OF EMPLOYEE PROFILE
+                                 EDIT COMPANY PROFILE
                               </header>
+
                           <div class="panel-body">
 
-                            <!-----------Employee Form Start------>
+                            <!-----------CREATING COMPANY PROFILE Form Start------>
 
-                              <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>EmployeController/add" enctype="multipart/form-data" id="employe_form">
+
+                              <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>CompanyController/updateCompany">
                                   <div class="form-group">
-                                      <label class="col-sm-2 col-sm-2 control-label">Profile Image</label>
+                                      <label class="col-sm-2 col-sm-2 control-label">name</label>
                                       <div class="col-sm-10">
-                                        <input type="file" id="profile_pic" name="profile_pic" required="required">
-                                        <p class="help-block">Upload Profile Photo.</p>
+                                        <input type="hidden" class="form-control" name="id" value="<?php echo !empty($fields[0]['id']) ? $fields[0]['id']:""; ?>" required>
+                                          <input type="text" class="form-control" name="name" value="<?php echo !empty($fields[0]['name']) ? $fields[0]['name']:""; ?>" required>
                                       </div>
                                   </div>
-                                  <div class="form-group">
-                                <label class="col-sm-2 col-sm-2 control-label">Full name</label>
+                                   <div class="form-group">
+                                      <label class="col-sm-2 col-sm-2 control-label">Company name</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="full_name">
+                                          <input type="text" class="form-control" name="company_name" value="<?php echo !empty($fields[0]['company_name'])?$fields[0]['company_name']:""; ?>" required>
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Sex</label>
-                                      <div class="col-lg-10">
-                                          <select class="form-control m-bot15" name="sex" required>
-                                              <option value="0">Male</option>
-                                              <option value="1">Female</option>
-                                          </select>
+                                      <label class="col-sm-2 col-sm-2 control-label">RUT</label>
+                                      <div class="col-sm-10">
+                                          <input type="text" class="form-control" name="rut" value="<?php echo !empty($fields[0]['rut'])?$fields[0]['rut']:""; ?>" required>
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Date of birth</label>
+                                      <label class="col-sm-2 control-label">Country</label>
                                         <div class="col-sm-10">
-                                            <input type="date" placeholder=""  class="form-control" name="dob" required>
+                                            <input type="text" placeholder="Argentino" id="country_select" class="form-control" name="country" value="<?php echo !empty($fields[0]['country'])?$fields[0]['country']:""; ?>" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">I.D number</label>
-                                          <div class="col-sm-10">
-                                              <input type="number" placeholder=""  class="form-control" name="id_nos" maxlength="11" required>
-                                              <span class="help-inline">001234567891</span>
+                                     <label class="col-sm-2 control-label"></label>
+                                     <div class="col-sm-10">
+                                        <div class="country_dropdown">
+                                          <ul>
+                                            
+                                          </ul>
+                                        </div>
+                                     </div>
+                                  </div>
+                                 
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label">Town</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" placeholder="" class="form-control" name="town" value="<?php echo !empty($fields[0]['town'])?$fields[0]['town']:""; ?>"required>
+                                        </div>
+                                  </div>
+                                    <div class="form-group">
+                                      <label class="col-sm-2 control-label">Postal code</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" placeholder="" class="form-control" name="postal_code" value="<?php echo !empty($fields[0]['postal_code'])?$fields[0]['postal_code']:""; ?>" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone 1</label>
                                        <div class="col-sm-10">
-                                          <input type="number" placeholder="03301234567"  class="form-control" name="telephone_1" required>
-                                           <!--  <span class="help-inline">03301234567</span> -->
+                                          <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" value="<?php echo !empty($fields[0]['telephone'])?$fields[0]['telephone']:""; ?>" name="telephone" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Telephone 2</label>
+                                      <label class="col-sm-2 control-label">Contact in company</label>
                                        <div class="col-sm-10">
-                                          <input type="number" placeholder="03301234567"  class="form-control" name="telephone_2">
-                                           <!--  <span class="help-inline">03301234567</span> -->
+                                          <select name="contact_in_company" class="form-control" required>
+                                            <option value="0" <?php echo !empty($fields[0]['contact_in_company']==0) ? "selected":""; ?>>Yes</option>
+                                            <option value="1" <?php echo !empty($fields[0]['contact_in_company']==1)? "selected":""; ?>>No</option>
+                                          </select>
                                         </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Medical Coverage</label>
+                                      <label class="col-sm-2 control-label">Contact Name</label>
                                        <div class="col-sm-10">
-                                          <input type="text" placeholder="Medical Coverage"  class="form-control" name="med_covrg" required>
+                                          <input type="text"  class="form-control" name="contact_name" value="<?php echo !empty($fields[0]['contact_name'])?$fields[0]['contact_name']:""; ?>">
+                                        </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label">Rank</label>
+                                       <div class="col-sm-10">
+                                          <input type="text" placeholder="" class="form-control" name="contact_rank" value="<?php echo !empty($fields[0]['Rank'])?$fields[0]['Rank']:""; ?>">
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="johndoe@email.com"  class="form-control" name="emp_email" required>
+                                            <input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email" value="<?php echo !empty($fields[0]['email'])?$fields[0]['email']:""; ?>">
                                         </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Physical Address</label>
-                                        <div class="col-sm-10">
-                                            <textarea name="physical_address" class="form-control" rows="5" required>Employee Address</textarea>
+                                      <label class="col-sm-2 control-label">Telephone / Internal</label>
+                                       <div class="col-sm-10">
+                                          <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" name="contact_telephone" value="<?php echo !empty($fields[0]['contact_telephone'])?$fields[0]['contact_telephone']:""; ?>">
                                         </div>
                                   </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Dacuments One</label>
-                                        <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type" required>
-                                                  <option value="0">Health document</option>
-                                                  <option value="1">Food Handling certificate</option>
-                                                  <option value="2">Identity Card</option>
-                                          </select>
-                                             <p class="help-block">Document Type</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="text" placeholder="Expire date" data-mask="99/99/9999" class="form-control" name="expire_date" required>
-                                              <span class="help-inline">dd/mm/yyyy</span>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic" required>
-                                            <p class="help-block">Upload Dacument Photo.</p>
-                                        </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Dacuments Two</label>
-                                        <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type_2" required>
-                                                  <option value="0">Health document</option>
-                                                  <option value="1">Food Handling certificate</option>
-                                                  <option value="2">Identity Card</option>
-                                          </select>
-                                             <p class="help-block">Document Type</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="text" placeholder="Expire date" data-mask="99/99/9999" class="form-control" name="expire_date2" required>
-                                              <span class="help-inline">dd/mm/yyyy</span>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic2" required>
-                                            <p class="help-block">Upload Dacument Photo.</p>
-                                        </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Dacuments Three</label>
-                                        <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type_3" required>
-                                                  <option value="0">Health document</option>
-                                                  <option value="1">Food Handling certificate</option>
-                                                  <option value="2">Identity Card</option>
-                                          </select>
-                                             <p class="help-block">Document Type</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="text" placeholder="Expire date" data-mask="99/99/9999" class="form-control" name="expire_date3">
-                                              <span class="help-inline">dd/mm/yyyy</span>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic3">
-                                            <p class="help-block">Upload Dacument Photo.</p>
-                                        </div>
-                                </div>
                                 <div class="form-group">
                                     <div class="col-sm-2"></div>
                                     <div class="col-sm-10">
@@ -629,7 +606,7 @@
                                 </div>
                               </form>
 
-                                <!-----------Employee Form End------>
+                                <!-----------CREATING COMPANY PROFILE Form End------>
 
                           </div>
                       </section>
@@ -651,7 +628,10 @@
       <!--footer end-->
   </section>
 
- <script href="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script href="<?php echo base_url(); ?>assets/js/jquery.js"></script>
     <script href="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <script href="<?php echo base_url(); ?>assets/js/jquery.scrollTo.min.js"></script>
     <script href="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
@@ -751,4 +731,3 @@
 
   </body>
 </html>
-

@@ -24,6 +24,24 @@
     <script src="<?php echo base_url(); ?>assets/js/easy-pie-chart.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/count.js"></script>
 
+    <script type="text/javascript">
+
+      
+      
+    $(document).ready(function(){
+
+        $('.deleteClass').click(function(){
+        
+          confirm("Are you sure to delete this data.");        
+
+        });
+
+    });
+
+
+
+    </script>
+
   <script>
 
       //owl carousel
@@ -66,6 +84,8 @@
 			 });
 		  }
    	  });
+
+
 
   </script>
 

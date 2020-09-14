@@ -9,6 +9,7 @@ public function __construct(){
 	parent::__construct();
 	$this->load->helper('form');
 	$this->load->library('form_validation');
+	$this->load->model('guests/GuestsModel');
 
 
 }
@@ -89,11 +90,52 @@ public function add(){
 			$this->load->view('employe_profile');
 		}
 
+	}
+
+/* Add Guest Profile End  */
+
+/* End Get Guests List 	*/
+
+
+public function showGuestsList(){
+
+	$data['fields']=$this->GuestsModel->getListData();
+
+	$this->load->view("header");
+	$this->load->view("guest_list",$data);
+	$this->load->view("footer");
 
 
 }
 
-/* Add Guest Profile End  */
+
+/*  End Get Guest List  */
+
+
+
+/*Start Delete Employee*/
+
+	public function deleteGuest(){
+
+		$deleteID=$_REQUEST['id'];
+
+		$result=$this->GuestsModel->delete($deleteID);
+
+		if(!empty($result)){
+
+			$this->session->set_flashdata('success', "Record Delete Successfully !!"); 
+			redirect('EmployeController/showEmployeeList');
+
+		}
+		else{
+
+			$this->session->set_flashdata('error',"Sorry,Record Delete failed.");
+			redirect('EmployeController/showEmployeeList');
+		}
+
+
+
+	}
 
 
 

@@ -19,6 +19,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker.css" />
 
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-timepicker/compiled/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/assets/bootstrap-datetimepicker/css/datetimepicker.css" />
+
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
      <link href="<?php echo base_url(); ?>assets/css/style-responsive.css" rel="stylesheet" />
@@ -485,11 +491,20 @@
                 </div>
             <?php } ?>
 
+            <?php 
+
+                echo "</pre>";
+                print_r($fields);
+                echo "</pre>";
+               
+
+            ?>
+
               <div class="row">
                   <div class="col-lg-8 col-lg-offset-2">
                       <section class="panel">
                               <header class="panel-heading">
-                                  CREATION OF EMPLOYEE PROFILE
+                                  EDIT EMPLOYEE PROFILE
                               </header>
                           <div class="panel-body">
 
@@ -499,29 +514,30 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 col-sm-2 control-label">Profile Image</label>
                                       <div class="col-sm-10">
-                                        <input type="file" id="profile_pic" name="profile_pic" required="required">
+                                        <img src="<?php echo base_url().'uploads/'.$fields[0]['profile_pic']; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
+                                        <input type="file" id="profile_pic" name="profile_pic" value="<?php echo !empty($fields[0]['profile_pic'])?$fields[0]['profile_pic']:""; ?>" required="required">
                                         <p class="help-block">Upload Profile Photo.</p>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Full name</label>
                                       <div class="col-sm-10">
-                                          <input type="text" class="form-control" name="full_name">
+                                          <input type="text" class="form-control" name="full_name" value="<?php echo !empty($fields[0]['full_name'])?$fields[0]['full_name']:""; ?>">
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Sex</label>
                                       <div class="col-lg-10">
                                           <select class="form-control m-bot15" name="sex" required>
-                                              <option value="0">Male</option>
-                                              <option value="1">Female</option>
+                                              <option value="0" <?php echo !empty($fields[0]['full_name'])?"selected":""; ?>>Male</option>
+                                              <option value="1" <?php echo !empty($fields[0]['full_name'])?"selected":""; ?>>Female</option>
                                           </select>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Date of birth</label>
                                         <div class="col-sm-10">
-                                            <input type="date" placeholder=""  class="form-control" name="dob" required>
+                                            <input type="text" placeholder="" value="<?php echo strftime('%Y-%m-%d', strtotime($fields[0]['dob'])); ?>" class="form-control default-date-picker" name="dob" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -656,6 +672,8 @@
     <script href="<?php echo base_url(); ?>assets/js/jquery.scrollTo.min.js"></script>
     <script href="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
+
+
     <script href="<?php echo base_url(); ?>assets/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script class="include" type="text/javascript" href="<?php echo base_url(); ?>assets/js/jquery.dcjqaccordion.2.7.js"></script>
 
@@ -666,11 +684,19 @@
   <!--custom checkbox & radio-->
   <script type="text/javascript" href="<?php echo base_url(); ?>assets/js/ga.js"></script>
 
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-  <script type="text/javascript" href="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/assets/ckeditor/ckeditor.js"></script>
+
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/moment.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/jquery-multi-select/js/jquery.multi-select.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
 
   <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
   <script href="<?php echo base_url(); ?>assets/js/respond.min.js" ></script>

@@ -8,6 +8,7 @@ class EmployeController extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->model('employee/EmployeeModel');
 
 
 	}
@@ -111,6 +112,75 @@ class EmployeController extends CI_Controller {
 	}
 
 /*****************Employee Profile Insert End*****************/
+
+
+/* End Get Employee List 	*/
+
+
+public function showEmployeeList(){
+
+	$this->load->model('employee/EmployeeModel');
+
+	$data['fields']=$this->EmployeeModel->getListData();
+
+	$this->load->view("header");
+	$this->load->view("employee_list",$data);
+	$this->load->view("footer");
+
+
+}
+
+
+/*  End Get Employee List  */
+
+
+
+/*Start Edit Employe   */
+
+
+	public function editEmploye(){
+
+		$id=$_REQUEST['id'];
+
+
+		$data['fields']=$this->EmployeeModel->getItemData($id);
+
+		$this->load->view('employe_edit',$data);
+
+
+	}
+
+/*End Edit Employe    */
+
+
+
+
+/*Start Delete Employee*/
+
+	public function deleteEmploye(){
+
+		$deleteID=$_REQUEST['id'];
+
+		$result=$this->EmployeeModel->delete($deleteID);
+
+		if(!empty($result)){
+
+			$this->session->set_flashdata('success', "Record Delete Successfully !!"); 
+			redirect('EmployeController/showEmployeeList');
+
+		}
+		else{
+
+			$this->session->set_flashdata('error',"Sorry,Record Delete failed.");
+			redirect('EmployeController/showEmployeeList');
+		}
+
+
+
+	}
+
+
+/*End Delete Employee*/
 
 
 

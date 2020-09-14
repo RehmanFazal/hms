@@ -8,7 +8,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Form Component</title>
+    <title>Hotel Management System</title>
 
     <!-- Bootstrap core CSS -->
    <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +32,25 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
+
+       <style type="text/css">
+      .country_dropdown {
+    /* display: none; */
+    z-index: 999999999999;
+    position: absolute;
+    background-color: #fff;
+    height: auto;
+    max-width: 400px;
+    width: 100%;
+    /*padding: 10px 30px;*/
+}
+
+.country_dropdown li:hover {
+    background-color: #7e7c7c;
+    color: #fff;
+    padding: 5px 5px;
+}
+    </style>
 
 
   </head>
@@ -467,7 +486,7 @@
             <?php } ?>
 
               <div class="row">
-                  <div class="col-lg-12">
+                  <div class="col-lg-8 col-lg-offset-2">
                       <section class="panel">
                               <header class="panel-heading">
                                   CREATION OF GUEST PROFILE
@@ -478,13 +497,13 @@
 
                               <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>GuestController/add">
                                   <div class="form-group">
-                                      <label class="col-sm-2 col-sm-2 control-label">Name:(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 col-sm-2 control-label">Name</label>
                                       <div class="col-sm-10">
                                           <input type="text" class="form-control" name="guest_name" required>
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 col-sm-2 control-label">Surname:(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 col-sm-2 control-label">Surname</label>
                                       <div class="col-sm-10">
                                           <input type="text" class="form-control" name="guest_surname" required>
                                       </div>
@@ -499,10 +518,9 @@
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Date of birth:(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 control-label">Date of birth</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="" data-mask="99/99/9999" class="form-control" name="guest_dob" required>
-                                              <span class="help-inline">dd/mm/yyyy</span>
+                                            <input type="date" placeholder="" class="form-control" name="guest_dob" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -518,13 +536,26 @@
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Nationality(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 control-label">Nationality</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" class="form-control" name="nationality" required>
+                                            <input type="text" placeholder="Argentino" class="form-control" name="nationality" id="country_select" required>
                                         </div>
                                   </div>
+
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Document Type:(<span class="text-danger">*</span>)</label>
+                                     <label class="col-sm-2 control-label"></label>
+                                     <div class="col-sm-10">
+                                        <div class="country_dropdown">
+                                          <ul>
+                                            
+                                          </ul>
+                                        </div>
+                                     </div>
+                                  </div>
+
+
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Document Type</label>
                                       <div class="col-lg-10">
                                           <select class="form-control m-bot15" name="guest_doc_type" required>
                                               <option value="CI">CI</option>
@@ -533,26 +564,36 @@
                                       </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Number:(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 control-label">Number</label>
                                           <div class="col-sm-10">
                                               <input type="text" placeholder="" data-mask="99999999999" class="form-control" name="number" required>
                                               <span class="help-inline">99999999999</span>
                                         </div>
                                   </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Country of expedition:(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 control-label">Country of expedition</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" class="form-control" name="country_expedition" required>
+                                            <input type="text" placeholder="Argentino" class="form-control" name="country_expedition" id="country_select" required>
                                         </div>
                                   </div>
+                                          <div class="form-group">
+                                     <label class="col-sm-2 control-label"></label>
+                                     <div class="col-sm-10">
+                                        <div class="country_dropdown">
+                                          <ul>
+                                            
+                                          </ul>
+                                        </div>
+                                     </div>
+                                  </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">City:(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 control-label">City</label>
                                         <div class="col-sm-10">
                                             <input type="text" placeholder="New York" class="form-control" name="city" required>
                                         </div>
                                   </div>
                                    <div class="form-group">
-                                      <label class="col-sm-2 control-label">Address:(<span class="text-danger">*</span>)</label>
+                                      <label class="col-sm-2 control-label">Address</label>
                                         <div class="col-sm-10">
                                             <textarea class="form-control" name="address" rows="5" required></textarea>
                                         </div>
@@ -639,41 +680,104 @@
       <!--footer end-->
   </section>
 
+ <script href="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+    <script href="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <script href="<?php echo base_url(); ?>assets/js/jquery.scrollTo.min.js"></script>
+    <script href="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
 
-  <!-- js placed at the end of the document so the pages load faster -->
-  <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/jquery.scrollTo.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-
-  <script src="<?php echo base_url(); ?>assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-  <script class="include" type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script href="<?php echo base_url(); ?>assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script class="include" type="text/javascript" href="<?php echo base_url(); ?>assets/js/jquery.dcjqaccordion.2.7.js"></script>
 
   <!--custom switch-->
-  <script src="<?php echo base_url(); ?><?php echo base_url(); ?>assets/js/bootstrap-switch.js"></script>
+  <script href="<?php echo base_url(); ?>assets/js/bootstrap-switch.js"></script>
   <!--custom tagsinput-->
-  <script src="<?php echo base_url(); ?><?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script>
+  <script href="<?php echo base_url(); ?>assets/js/jquery.tagsinput.js"></script>
   <!--custom checkbox & radio-->
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/ga.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/js/ga.js"></script>
 
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/date.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/ckeditor/ckeditor.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/date.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/ckeditor/ckeditor.js"></script>
 
-  <script type="text/javascript" src="<?php echo base_url(); ?>assets/assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/respond.min.js" ></script>
+  <script type="text/javascript" href="<?php echo base_url(); ?>assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+  <script href="<?php echo base_url(); ?>assets/js/respond.min.js" ></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="http://localhost/survey-manage/assets/plugins/jQuery/jquery-1.12.4.min.js"></script>
 
 
   <!--common script for all pages-->
-    <script src="<?php echo base_url(); ?>assets/js/common-scripts.js"></script>
+    <script href="<?php echo base_url(); ?>assets/js/common-scripts.js"></script>
 
   <!--script for this page-->
-  <script src="<?php echo base_url(); ?>assets/js/form-component.js"></script>
+  <script href="<?php echo base_url(); ?>assets/js/form-component.js"></script>
+
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      $('#country_select').keyup(function(){
+        
+          var txt=$(this).val();
+         
+
+          if(txt==''){
+
+             $('.country_dropdown ul').html('');
+
+          }
+          else{
+
+              $.ajax({
+                    
+                  url:"<?php echo base_url(); ?>country/CountryController/select_country",
+                  method:"POST",
+                  data:{search:txt},
+                  dataType:"text",
+                  success:function(data){
+
+                      $('.country_dropdown ul').html(data);
+
+                      $('.country_dropdown ul li').css('cursor','pointer');
+
+                      $('.country_dropdown ul li').click(function(){
+
+                          var country_value=$(this).attr('data_id');
+
+                          $('#country_select').val(country_value);
+
+                          var get_value=$('#country_select').val();
+
+                          if (get_value){
+
+                             $('.country_dropdown').hide();
+
+                          }
+                          else{
+
+                            $('.country_dropdown').show();
+
+                          }
+
+                          //$('.country_dropdown').html('');
 
 
-  <!-- <script type="text/javascript"></script> -->
+                    });
+
+                }
+                                
+           }); 
+
+
+
+          }
+
+    });
+
+});
+  </script>
 
   </body>
 </html>
+
