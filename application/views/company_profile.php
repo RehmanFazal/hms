@@ -507,7 +507,7 @@
 
                               <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>CompanyController/add">
                                   <div class="form-group">
-                                      <label class="col-sm-2 col-sm-2 control-label">name</label>
+                                      <label class="col-sm-2 col-sm-2 control-label">Name</label>
                                       <div class="col-sm-10">
                                           <input type="text" class="form-control" name="name" required>
                                       </div>
@@ -560,33 +560,34 @@
                                             <span class="help-inline">(999) 999-9999</span>
                                         </div>
                                   </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Contact in company</label>
+                                <!--   <div class="form-group">
+                                      <label class="col-sm-2 control-label"></label>
                                        <div class="col-sm-10">
                                           <select name="contact_in_company" class="form-control" required>
                                             <option value="0">Yes</option>
                                             <option value="1">No</option>
                                           </select>
                                         </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Contact Name</label>
-                                       <div class="col-sm-10">
-                                          <input type="text" placeholder="John Doe"  class="form-control" name="contact_name">
+                                  </div> -->
+                                  <div id="company_person">
+                                    <div class="form-group" id="company_contact">
+                                        <label class="col-sm-2 control-label label_contact">Contact in company</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" placeholder="John Doe"  class="form-control" name="contact_name[]">
                                         </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Rank</label>
-                                       <div class="col-sm-10">
-                                          <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" name="contact_rank">
+                                        <div class="col-sm-3">
+                                            <input type="text" placeholder="Rank"  class="form-control" name="contact_rank[]">
                                         </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email">
+                                        <div class="col-sm-3">
+                                              <input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email[]">
                                         </div>
-                                  </div>
+                                        <div class="col-sm-1">
+                                          <a class="btn btn-primary btn-sm clone_btn">
+                                             <i class="icon-expand-alt" style="font-size: 20px;"></i>
+                                          </a> 
+                                        </div>
+                                    </div>
+                                </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone / Internal</label>
                                        <div class="col-sm-10">
@@ -724,6 +725,15 @@
     });
 
 });
+  </script>
+  <script type="text/javascript">
+    var i=1;
+      $(document).ready(function(){
+        $(".clone_btn").click(function(){
+        $("#company_contact").clone().insertBefore("#company_contact").prop("id","company_contact"+i);
+        i++;
+      });
+    });
   </script>
 
   </body>

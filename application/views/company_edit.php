@@ -564,33 +564,53 @@
                                           <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" value="<?php echo !empty($fields[0]['telephone'])?$fields[0]['telephone']:""; ?>" name="telephone" required>
                                         </div>
                                   </div>
-                                  <div class="form-group">
+                             <!--      <div class="form-group">
                                       <label class="col-sm-2 control-label">Contact in company</label>
                                        <div class="col-sm-10">
                                           <select name="contact_in_company" class="form-control" required>
-                                            <option value="0" <?php echo !empty($fields[0]['contact_in_company']==0) ? "selected":""; ?>>Yes</option>
-                                            <option value="1" <?php echo !empty($fields[0]['contact_in_company']==1)? "selected":""; ?>>No</option>
+                                            <option value="0" <?php //echo !empty($fields[0]['contact_in_company']==0) ? "selected":""; ?>>Yes</option>
+                                            <option value="1" <?php //echo !empty($fields[0]['contact_in_company']==1)? "selected":""; ?>>No</option>
                                           </select>
                                         </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Contact Name</label>
-                                       <div class="col-sm-10">
-                                          <input type="text"  class="form-control" name="contact_name" value="<?php echo !empty($fields[0]['contact_name'])?$fields[0]['contact_name']:""; ?>">
+                                  </div> -->
+                                  <div id="company_person">
+                                    <?php 
+
+                                     $data1=json_decode($fields[0]['contact_name']);
+                                     $count=count($data1);
+                                     $data2=json_decode($fields[0]['Rank']);
+                                     $data3=json_decode($fields[0]['email']);
+
+                                     $data=array_merge($data1,$data2,$data3);
+                                     
+                                     for($i=0;$i<$count;$i++){
+                                       
+
+                                    ?>
+
+
+                                    <div class="form-group" id="<?php echo 'company_contact'; ?>">
+                                        <label class="col-sm-2 control-label label_contact">Contact in company</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" placeholder="John Doe"  class="form-control" name="contact_name[]" value="<?php if($count==1){echo $data[$i]; }else{ echo $data[$i];}?>">
                                         </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Rank</label>
-                                       <div class="col-sm-10">
-                                          <input type="text" placeholder="" class="form-control" name="contact_rank" value="<?php echo !empty($fields[0]['Rank'])?$fields[0]['Rank']:""; ?>">
+                                        <div class="col-sm-3">
+                                            <input type="text" placeholder="Rank"  class="form-control" name="contact_rank[]" value="<?php if($count==1){echo $data[$i+1]; } elseif($count==2){echo $data[$i+2];}else{ echo $data[$i+3];}?>">
                                         </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <label class="col-sm-2 control-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email" value="<?php echo !empty($fields[0]['email'])?$fields[0]['email']:""; ?>">
+                                        <div class="col-sm-3">
+                                              <input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email[]" value="<?php if($count==1){echo $data[$i+2]; } elseif($count==2){echo $data[$i+4];}else{ echo $data[$i+6];}?>">
                                         </div>
-                                  </div>
+                                        <div class="col-sm-1">
+                                          <a class="btn btn-primary btn-sm clone_btn">
+                                             <i class="icon-expand-alt" style="font-size: 20px;"></i>
+                                          </a> 
+                                        </div>
+                                    </div>
+                                  <?php    /* } */
+                                          } 
+                                      ?>
+                                </div>
+                           
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone / Internal</label>
                                        <div class="col-sm-10">
@@ -727,6 +747,15 @@
     });
 
 });
+  </script>
+    <script type="text/javascript">
+    var i=1;
+      $(document).ready(function(){
+        $(".clone_btn").click(function(){
+        $("#company_contact").clone().insertBefore("#company_contact").prop("id","company_contact"+i);
+        i++;
+      });
+    });
   </script>
 
   </body>

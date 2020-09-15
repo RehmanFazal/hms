@@ -37,9 +37,34 @@ public function add(){
 		$contact_name=$this->input->post('contact_name');
 		$contact_rank=$this->input->post('contact_rank');
 		$contact_email=$this->input->post('contact_email');
+		$c_name=null;$c_rank=null;$c_email=null;
+
+
+
+		for($i=0;$i<count($contact_name);$i++) {
+			$c_name.=$contact_name[$i].",";
+			$c_rank.=$contact_rank[$i].",";
+			$c_email.=$contact_email[$i].",";
+			# code...
+		}
+
+		$c_name=rtrim($c_name,",");
+		$c_rank=rtrim($c_rank,",");
+		$c_email=rtrim($c_email,",");
+
+		$c_name=explode(",",$c_name);
+		$c_rank=explode(",",$c_rank);
+		$c_email=explode(",",$c_email);
+
+		$c_name=json_encode($c_name);
+		$c_rank=json_encode($c_rank);
+		$c_email=json_encode($c_email);
+		
+	
 		$contact_telephone=$this->input->post('contact_telephone');
 
 		$insert_data=array(
+
 			'name'=>$name,
 			'company_name' =>$company_name,
 			'rut'=>$rut,
@@ -48,9 +73,9 @@ public function add(){
 			'postal_code'=>$postal_code,
 			'telephone'=>$telephone,
 			'contact_in_company'=>$contact_in_company,
-			'contact_name'=>$contact_name,
-			'Rank'=>$contact_rank,
-			'email'=>$contact_email,
+			'contact_name'=>$c_name,
+			'Rank'=>$c_rank,
+			'email'=>$c_email,
 			'contact_telephone'=>$contact_telephone
 
 		);
@@ -129,6 +154,35 @@ public function showCompanyList(){
 		$contact_name=$this->input->post('contact_name');
 		$contact_rank=$this->input->post('contact_rank');
 		$contact_email=$this->input->post('contact_email');
+
+		$c_name=null;$c_rank=null;$c_email=null;
+
+		
+
+		for($i=0;$i<count($contact_name);$i++) {
+			$c_name.=$contact_name[$i].",";
+			$c_rank.=$contact_rank[$i].",";
+			$c_email.=$contact_email[$i].",";
+			# code...
+		}
+
+		$c_name=rtrim($c_name,",");
+		$c_rank=rtrim($c_rank,",");
+		$c_email=rtrim($c_email,",");
+
+		$c_name=explode(",",$c_name);
+		$c_rank=explode(",",$c_rank);
+		$c_email=explode(",",$c_email);
+
+		$c_name=json_encode($c_name);
+		$c_rank=json_encode($c_rank);
+		$c_email=json_encode($c_email);
+		
+
+
+
+
+
 		$contact_telephone=$this->input->post('contact_telephone');
 
 		$updateData=array(
@@ -140,9 +194,9 @@ public function showCompanyList(){
 			'postal_code'=>$postal_code,
 			'telephone'=>$telephone,
 			'contact_in_company'=>$contact_in_company,
-			'contact_name'=>$contact_name,
-			'Rank'=>$contact_rank,
-			'email'=>$contact_email,
+			'contact_name'=>$c_name,
+			'Rank'=>$c_rank,
+			'email'=>$c_email,
 			'contact_telephone'=>$contact_telephone
 
 		);

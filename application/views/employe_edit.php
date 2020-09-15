@@ -493,9 +493,9 @@
 
             <?php 
 
-                echo "</pre>";
+      /*          echo "</pre>";
                 print_r($fields);
-                echo "</pre>";
+                echo "</pre>";*/
                
 
             ?>
@@ -510,18 +510,20 @@
 
                             <!-----------Employee Form Start------>
 
-                              <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>EmployeController/add" enctype="multipart/form-data" id="employe_form">
+                              <form class="form-horizontal" method="POST" action="<?php echo base_url(); ?>EmployeController/updateEmployee" enctype="multipart/form-data" id="employe_form">
                                   <div class="form-group">
                                       <label class="col-sm-2 col-sm-2 control-label">Profile Image</label>
                                       <div class="col-sm-10">
                                         <img src="<?php echo base_url().'uploads/'.$fields[0]['profile_pic']; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
-                                        <input type="file" id="profile_pic" name="profile_pic" value="<?php echo !empty($fields[0]['profile_pic'])?$fields[0]['profile_pic']:""; ?>" required="required">
+                                        <input type="file" id="profile_pic" name="profile_pic">
+                                        <input type="hidden" name="old_profile" value="<?php echo !empty($fields[0]['profile_pic'])?$fields[0]['profile_pic']:""; ?>">
                                         <p class="help-block">Upload Profile Photo.</p>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                 <label class="col-sm-2 col-sm-2 control-label">Full name</label>
                                       <div class="col-sm-10">
+                                        <input type="hidden" name="id" value="<?php echo $fields[0]['id']; ?>">
                                           <input type="text" class="form-control" name="full_name" value="<?php echo !empty($fields[0]['full_name'])?$fields[0]['full_name']:""; ?>">
                                       </div>
                                   </div>
@@ -537,64 +539,67 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Date of birth</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="" value="<?php echo strftime('%Y-%m-%d', strtotime($fields[0]['dob'])); ?>" class="form-control default-date-picker" name="dob" required>
+                                            <input type="date" placeholder="" value="<?php echo date('Y-m-d',strtotime($fields[0]['dob'])); ?>" class="form-control default-date-picker" name="dob" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">I.D number</label>
                                           <div class="col-sm-10">
-                                              <input type="number" placeholder=""  class="form-control" name="id_nos" maxlength="11" required>
+                                              <input type="number" placeholder=""  class="form-control" name="id_nos" maxlength="11" value="<?php echo !empty($fields[0]['id_no'])?$fields[0]['id_no']:""; ?>" required>
                                               <span class="help-inline">001234567891</span>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone 1</label>
                                        <div class="col-sm-10">
-                                          <input type="number" placeholder="03301234567"  class="form-control" name="telephone_1" required>
+                                          <input type="number" placeholder="03301234567"  class="form-control" name="telephone_1" value="<?php echo !empty($fields[0]['telephone_no'])?$fields[0]['telephone_no']:""; ?>" required>
                                            <!--  <span class="help-inline">03301234567</span> -->
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Telephone 2</label>
                                        <div class="col-sm-10">
-                                          <input type="number" placeholder="03301234567"  class="form-control" name="telephone_2">
+                                          <input type="number" placeholder="03301234567"  class="form-control" name="telephone_2" value="<?php echo !empty($fields[0]['telephone_no2'])?$fields[0]['telephone_no2']:""; ?>">
                                            <!--  <span class="help-inline">03301234567</span> -->
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Medical Coverage</label>
                                        <div class="col-sm-10">
-                                          <input type="text" placeholder="Medical Coverage"  class="form-control" name="med_covrg" required>
+                                          <input type="text" placeholder="Medical Coverage"  class="form-control" name="med_covrg" value="<?php echo !empty($fields[0]['medical_coverage'])?$fields[0]['medical_coverage']:""; ?>" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="johndoe@email.com"  class="form-control" name="emp_email" required>
+                                            <input type="text" placeholder="johndoe@email.com"  class="form-control" name="emp_email" value="<?php echo !empty($fields[0]['mail'])?$fields[0]['mail']:""; ?>" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Physical Address</label>
                                         <div class="col-sm-10">
-                                            <textarea name="physical_address" class="form-control" rows="5" required>Employee Address</textarea>
+                                            <textarea name="physical_address" class="form-control" rows="5" required><?php echo !empty($fields[0]['physical_address'])?$fields[0]['physical_address']:""; ?></textarea>
                                         </div>
                                   </div>
+                                  <?php $data=json_decode($fields[0]['document_type']);
+                                        $data2=json_decode($fields[0]['document_expiration']);
+                                        $data3=json_decode($fields[0]['document_name']); ?>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Dacuments One</label>
                                         <div class="col-sm-3">
                                               <select class="form-control m-bot15" name="doc_type" required>
-                                                  <option value="0">Health document</option>
-                                                  <option value="1">Food Handling certificate</option>
-                                                  <option value="2">Identity Card</option>
+                                                  <option value="0" <?php echo !empty($data->doc_type)?"selected":""; ?>>Health document</option>
+                                                  <option value="1" <?php echo !empty($data->doc_type)?"selected":""; ?>>Food Handling certificate</option>
+                                                  <option value="2" <?php echo !empty($data->doc_type)?"selected":""; ?>>Identity Card</option>
                                           </select>
                                              <p class="help-block">Document Type</p>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="text" placeholder="Expire date" data-mask="99/99/9999" class="form-control" name="expire_date" required>
-                                              <span class="help-inline">dd/mm/yyyy</span>
+                                            <input type="date" placeholder="Expire date"  class="form-control" name="expire_date" value="<?php echo date('Y-m-d',strtotime($data2->expire_date)); ?>" required>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic" required>
+                                           <img src="<?php echo base_url().'uploads/'.$data3->doc_type; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
+                                            <input type="file" id="profile_pic" name="doc_pic" value="<?php echo $data3->doc_type; ?>">
                                             <p class="help-block">Upload Dacument Photo.</p>
                                         </div>
                                   </div>
@@ -602,18 +607,18 @@
                                       <label class="col-sm-2 control-label">Dacuments Two</label>
                                         <div class="col-sm-3">
                                               <select class="form-control m-bot15" name="doc_type_2" required>
-                                                  <option value="0">Health document</option>
-                                                  <option value="1">Food Handling certificate</option>
-                                                  <option value="2">Identity Card</option>
+                                                  <option value="0" <?php echo !empty($data->doc_type2)?"selected":""; ?>>Health document</option>
+                                                  <option value="1" <?php echo !empty($data->doc_type2)?"selected":""; ?>>Food Handling certificate</option>
+                                                  <option value="2" <?php echo !empty($data->doc_type2)?"selected":""; ?>>Identity Card</option>
                                           </select>
                                              <p class="help-block">Document Type</p>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="text" placeholder="Expire date" data-mask="99/99/9999" class="form-control" name="expire_date2" required>
-                                              <span class="help-inline">dd/mm/yyyy</span>
+                                            <input type="date" placeholder="Expire date"  class="form-control" name="expire_date2" value="<?php echo date('Y-m-d',strtotime($data2->expire_date2)); ?>">
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic2" required>
+                                            <img src="<?php echo base_url().'uploads/'.$data3->doc_type2; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
+                                            <input type="file" id="profile_pic" name="doc_pic2" value="<?php echo $data3->doc_type2; ?>">
                                             <p class="help-block">Upload Dacument Photo.</p>
                                         </div>
                                   </div>
@@ -621,18 +626,18 @@
                                       <label class="col-sm-2 control-label">Dacuments Three</label>
                                         <div class="col-sm-3">
                                               <select class="form-control m-bot15" name="doc_type_3" required>
-                                                  <option value="0">Health document</option>
-                                                  <option value="1">Food Handling certificate</option>
-                                                  <option value="2">Identity Card</option>
+                                                   <option value="0" <?php echo !empty($data->doc_type3)?"selected":""; ?>>Health document</option>
+                                                  <option value="1" <?php echo !empty($data->doc_type3)?"selected":""; ?>>Food Handling certificate</option>
+                                                  <option value="2" <?php echo !empty($data->doc_type3)?"selected":""; ?>>Identity Card</option>
                                           </select>
                                              <p class="help-block">Document Type</p>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="text" placeholder="Expire date" data-mask="99/99/9999" class="form-control" name="expire_date3">
-                                              <span class="help-inline">dd/mm/yyyy</span>
+                                            <input type="date" placeholder="Expire date" class="form-control" name="expire_date3" value="<?php echo date('Y-m-d',strtotime($data2->expire_date3)); ?>">
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic3">
+                                           <img src="<?php echo base_url().'uploads/'.$data3->doc_type3; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
+                                            <input type="file" id="profile_pic" name="doc_pic3" value="<?php echo $data3->doc_type3; ?>">
                                             <p class="help-block">Upload Dacument Photo.</p>
                                         </div>
                                 </div>

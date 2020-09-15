@@ -35,7 +35,7 @@
 										<th>Full Name</th>
 										<th>Company Name</th>
 										<th>Country</th>
-										<th>Email</th>
+										<th>Phone</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -59,7 +59,7 @@
 									<td><?php echo $field['name']; ?></td>
 									<td><?php echo $field['company_name']; ?></td>
 									<td><?php echo $field['country']; ?></td>
-									<td><?php echo $field['email']; ?></td>
+									<td><?php echo $field['telephone']; ?></td>
 									<td class="center">
 										<a  href="<?php echo site_url($edit_url) ?>">
 											<button type="button" class="btn btn-primary"><i class="icon-pencil"></i></button>
