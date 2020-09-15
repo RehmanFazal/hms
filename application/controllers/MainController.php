@@ -48,6 +48,15 @@ class MainController extends CI_Controller {
 			return false;
 		}
 
+		$result['permissions'] = $this->ItemModel->loadPermissions();
+
+		$user_permissions = array();
+		if(!empty($result['id']))
+		{
+			$user_permissions = $this->ItemModel->getUserPermissions($result['id']);
+			$result['group_perms'] = !empty($user_permissions['group_perms']) ? $user_permissions['group_perms'] : '';
+		}
+
 		$this->session->set_userdata($result);
 
 		$this->load->view('header');

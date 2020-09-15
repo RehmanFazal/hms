@@ -48,7 +48,8 @@
                 <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo">Flat<span>lab</span></a>
+            <!--<a href="index.html" class="logo">Flat<span>lab</span></a>-->
+            <a href="#" class="logo">Hotel <span>Management</span> System</a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
@@ -293,6 +294,63 @@
                       </a>
                   </li>
 
+                  <?php
+                  		$this->session->userdata['user_name']
+                  ?>
+                  <?php
+
+				  if(!empty($this->session->userdata['permissions']))
+				  {
+				  		$permissions = $this->session->userdata['permissions'];
+				  		$user_permssions = !empty($this->session->userdata['group_perms']) ? explode(",", $this->session->userdata['group_perms']) : array();
+
+				  		foreach($permissions as $perm)
+				  		{
+				  			if(in_array($perm["id"], $user_permssions))
+				  			{
+				  				$title = "User";
+				  				$icon = "icon-user-md";
+				  				$add_url = 'user/UserController/add_user';
+				  				$view_url = 'user/UserController';
+				  				if($perm["perm_desc"] == "Manage Employee")
+				  				{
+				  					$title = "Employee";
+				  					$icon = "icon-user";
+				  					$add_url = 'employee/EmployeeController/add_employee';
+				  					$view_url = 'employee/EmployeeController';
+				  				}
+				  				else if($perm["perm_desc"] == "Manage Extras")
+				  				{
+				  					$title = "Extra";
+				  					$icon = "icon-adn";
+				  					$add_url = 'extras/ExtrasController/add_extra';
+				  					$view_url = 'extras/ExtrasController';
+				  				}
+				  				else if($perm["perm_desc"] == "Manage Guest")
+				  				{
+				  					$title = "Guest";
+				  					$icon = "icon-male";
+				  					$add_url = 'guest/GuestController/add_guest';
+				  					$view_url = 'guest/GuestController';
+				  				}
+				  ?>
+				  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="<?php  echo $icon; ?>"></i>
+                          <span><?php echo $title.'s'; ?></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="<?php echo site_url($add_url); ?>">Add <?php echo $title; ?></a></li>
+                          <li><a  href="<?php echo site_url($view_url); ?>">View <?php echo $title; ?></a></li>
+                      </ul>
+                  </li>
+				  <?php
+							}
+				  		}
+				  }
+				  if($this->session->userdata['user_name'] == "admin")
+				  {
+                  ?>
                   <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="icon-group"></i>
@@ -303,140 +361,7 @@
                           <li><a  href="<?php echo site_url('group/GroupController') ?>">View Groups</a></li>
                       </ul>
                   </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-user-md"></i>
-                          <span>Users</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="<?php echo site_url('user/UserController/add_user') ?>">Add User</a></li>
-                          <li><a  href="<?php echo site_url('user/UserController') ?>">View Users</a></li>
-                      </ul>
-                  </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-cogs"></i>
-                          <span>Components</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="grids.html">Grids</a></li>
-                          <li><a  href="calendar.html">Calendar</a></li>
-                          <li><a  href="gallery.html">Gallery</a></li>
-                          <li><a  href="todo_list.html">Todo List</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-tasks"></i>
-                          <span>Form Stuff</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="form_component.html">Form Components</a></li>
-                          <li><a  href="advanced_form_components.html">Advanced Components</a></li>
-                          <li><a  href="form_wizard.html">Form Wizard</a></li>
-                          <li><a  href="form_validation.html">Form Validation</a></li>
-                          <li><a  href="dropzone.html">Dropzone File Upload</a></li>
-                          <li><a  href="inline_editor.html">Inline Editor</a></li>
-                          <li><a  href="image_cropping.html">Image Cropping</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-th"></i>
-                          <span>Data Tables</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">Basic Table</a></li>
-                          <li><a  href="responsive_table.html">Responsive Table</a></li>
-                          <li><a  href="dynamic_table.html">Dynamic Table</a></li>
-                          <li><a  href="advanced_table.html">Advanced Table</a></li>
-                          <li><a  href="editable_table.html">Editable Table</a></li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a  href="inbox.html">
-                          <i class="icon-envelope"></i>
-                          <span>Mail </span>
-                          <span class="label label-danger pull-right mail-info">2</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class=" icon-bar-chart"></i>
-                          <span>Charts</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="morris.html">Morris</a></li>
-                          <li><a  href="chartjs.html">Chartjs</a></li>
-                          <li><a  href="flot_chart.html">Flot Charts</a></li>
-                          <li><a  href="xchart.html">xChart</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-shopping-cart"></i>
-                          <span>Shop</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="product_list.html">List View</a></li>
-                          <li><a  href="product_details.html">Details View</a></li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a href="google_maps.html" >
-                          <i class="icon-map-marker"></i>
-                          <span>Google Maps </span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-glass"></i>
-                          <span>Extra</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="blank.html">Blank Page</a></li>
-                          <li><a  href="lock_screen.html">Lock Screen</a></li>
-                          <li><a  href="profile.html">Profile</a></li>
-                          <li><a  href="invoice.html">Invoice</a></li>
-                          <li><a  href="search_result.html">Search Result</a></li>
-                          <li><a  href="404.html">404 Error</a></li>
-                          <li><a  href="500.html">500 Error</a></li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a  href="login.html">
-                          <i class="icon-user"></i>
-                          <span>Login Page</span>
-                      </a>
-                  </li>
-
-                  <!--multi level menu start-->
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="icon-sitemap"></i>
-                          <span>Multi level Menu</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="javascript:;">Menu Item 1</a></li>
-                          <li class="sub-menu">
-                              <a  href="boxed_page.html">Menu Item 2</a>
-                              <ul class="sub">
-                                  <li><a  href="javascript:;">Menu Item 2.1</a></li>
-                                  <li class="sub-menu">
-                                      <a  href="javascript:;">Menu Item 3</a>
-                                      <ul class="sub">
-                                          <li><a  href="javascript:;">Menu Item 3.1</a></li>
-                                          <li><a  href="javascript:;">Menu Item 3.2</a></li>
-                                      </ul>
-                                  </li>
-                              </ul>
-                          </li>
-                      </ul>
-                  </li>
-                  <!--multi level menu end-->
-
+                  <?php } ?>
               </ul>
               <!-- sidebar menu end-->
           </div>

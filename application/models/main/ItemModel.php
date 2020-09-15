@@ -129,6 +129,45 @@ class ItemModel extends CI_Model {
 		return $row;
   }
 
+  function getUserPermissions($id = 0)
+  {
+		if(empty($id)) return false;
+
+		$query = "
+			SELECT
+				user_role.id,
+				user_role.role,
+				GROUP_CONCAT(group_permission.perm_id SEPARATOR ',') AS group_perms
+			FROM
+				user_role
+			LEFT JOIN group_permission ON group_permission.group_id = user_role.id
+			WHERE
+				user_role.id = ".(int)$id."
+			GROUP BY
+				user_role.id";
+
+		$query = $this->db->query($query);
+		$row = $query->row_array();
+
+		return $row;
+  }
+
+  function loadPermissions() {
+		$query = "
+				SELECT
+					permissions.id,
+					permissions.perm_desc
+				FROM
+					permissions
+				ORDER BY
+					permissions.perm_desc ASC";
+
+		$query = $this->db->query($query);
+		$result = $query->result_array();
+
+    	return $result;
+  }
+
 }
 
 ?>
