@@ -88,6 +88,85 @@
 
 
   </script>
+   <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      $('#country_select').keyup(function(){
+        
+          var txt=$(this).val();
+         
+
+          if(txt==''){
+
+             $('.country_dropdown ul').html('');
+
+          }
+          else{
+
+              $.ajax({
+                    
+                  url:"<?php echo base_url(); ?>country/CountryController/select_country",
+                  method:"POST",
+                  data:{search:txt},
+                  dataType:"text",
+                  success:function(data){
+
+                      $('.country_dropdown ul').html(data);
+
+                      $('.country_dropdown ul li').css('cursor','pointer');
+
+                      $('.country_dropdown ul li').click(function(){
+
+                          var country_value=$(this).attr('data_id');
+
+                          $('#country_select').val(country_value);
+
+                          var get_value=$('#country_select').val();
+
+                          if (get_value){
+
+                             $('.country_dropdown').hide();
+
+                          }
+                          else{
+
+                            $('.country_dropdown').show();
+
+                          }
+
+                    });
+
+                }
+                                
+           }); 
+
+
+
+          }
+
+    });
+
+});
+  </script>
+
+<script type="text/javascript">
+
+        var i=1;
+
+        $(document).ready(function(){
+
+            $(".clone_btn").click(function(){
+
+            $("#company_contact").clone().insertBefore("#company_contact").prop("id","company_contact"+i);
+
+            i++;
+
+        });
+
+      });
+
+  </script>
 
   </body>
 </html>

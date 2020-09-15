@@ -1,7 +1,8 @@
 <section id="main-content">
 	<section class="wrapper">
+		<!-- page start-->
 
-		   <?php          
+         <?php          
             if($this->session->flashdata('success')){
             ?>
 
@@ -19,22 +20,22 @@
                     <strong>Ooops!!! </strong><?php echo $this->session->flashdata('error'); ?>
                 </div>
             <?php } ?>
-		<!-- page start-->
+
+
         <div class="row">
         	<div class="col-lg-12">
             	<section class="panel">
-            		<header class="panel-heading">Employees</header>
+            		<header class="panel-heading">Companies</header>
 					<div class="panel-body">
 						<div class="adv-table">
 							<table  class="display table table-bordered table-striped" id="example">
 								<thead>
 									<tr>
 										<th>S.No#</th>
-										<th>Profile Pic</th>
 										<th>Full Name</th>
-										<th>Telephone</th>
-										<th>Email</th>
-										<th>Address</th>
+										<th>Company Name</th>
+										<th>Country</th>
+										<th>Phone</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -45,21 +46,20 @@
 									if(!empty($fields))
 
 									{
-
 										$i=1;
 										foreach($fields as $field)
 										{
+											$edit_url='company/CompanyController/editCompany/?id='.$field['id'];
 
-											$edit_url='EmployeController/editEmploye/?id='.$field['id'];	
-											$delete_url='EmployeController/deleteEmploye/?id='.$field['id'];
+											$delete_url='company/CompanyController/deleteCompany/?id='.$field['id'];
+
 								?>
 								<tr class="">
 									<td><?php echo $i++; ?></td>
-									<td><img src="<?php echo base_url().'uploads/'.$field['profile_pic']; ?>" style="max-width:60px;width:100%;border: 1px solid #b5b1b1;"></td>
-									<td><?php echo $field['full_name']; ?></td>
-									<td><?php echo $field['telephone_no']; ?></td>
-									<td><?php echo $field['mail']; ?></td>
-									<td><?php echo $field['physical_address']; ?></td>
+									<td><?php echo $field['name']; ?></td>
+									<td><?php echo $field['company_name']; ?></td>
+									<td><?php echo $field['country']; ?></td>
+									<td><?php echo $field['telephone']; ?></td>
 									<td class="center">
 										<a  href="<?php echo site_url($edit_url) ?>">
 											<button type="button" class="btn btn-primary"><i class="icon-pencil"></i></button>

@@ -25,6 +25,15 @@ class GuestsModel extends CI_Model
 
     }
 
+    public function getItemData($id){
+    	
+    	$sql="SELECT * FROM `guest` WHERE id=".$id;
+    	$excuteQuery=$this->db->query($sql);
+    	$queryResult=$excuteQuery->result_array();
+
+    	return $queryResult;
+    }
+
 }
 
 

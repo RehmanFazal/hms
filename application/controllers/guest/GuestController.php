@@ -15,11 +15,12 @@ public function __construct(){
 }
 
 
-public function index(){
+public function add_new(){
 
-	$this->load->view('guest_profile');
+	$this->load->view("header");
+	$this->load->view("guest/guest_profile");
+	$this->load->view("footer");
 	
-
 }
 
 /* Add Guest Profile Start */
@@ -81,13 +82,13 @@ public function add(){
 		if(!empty($result)){
 
 			$this->session->set_flashdata('success', "Record Inserted Successfully !!"); 
-			$this->load->view('employe_profile');
+			redirect("guest/GuestController/add_new");
 
 		}
 		else{
 
 			$this->session->set_flashdata('error',"Sorry,Record Inserted failed.");
-			$this->load->view('employe_profile');
+			redirect("guest/GuestController/add_new");
 		}
 
 	}
@@ -102,7 +103,7 @@ public function showGuestsList(){
 	$data['fields']=$this->GuestsModel->getListData();
 
 	$this->load->view("header");
-	$this->load->view("guest_list",$data);
+	$this->load->view("guest/guest_list",$data);
 	$this->load->view("footer");
 
 
@@ -111,6 +112,102 @@ public function showGuestsList(){
 
 /*  End Get Guest List  */
 
+/*Start Edit Guests   */
+
+
+	public function editGuest(){
+
+		$id=$_REQUEST['id'];
+
+
+		$data['fields']=$this->GuestsModel->getItemData($id);
+
+		$this->load->view("header");
+		$this->load->view('guest/guest_edit',$data);
+		$this->load->view("footer");
+
+
+	}
+
+/*End Edit Guests    */
+
+
+/*Start Update Guests   */
+
+
+	public function UpdateGuest(){
+
+		$guest_name=$this->input->post('guest_name');
+		$guest_surname=$this->input->post('guest_surname');
+		$sex=$this->input->post('sex');
+		$dob=$this->input->post('guest_dob');
+		$martial_status=$this->input->post('martial_status');
+		$nationality=$this->input->post('nationality');
+		$guest_doc_type=$this->input->post('guest_doc_type');
+		$number=$this->input->post('number');
+		$country_expedition=$this->input->post('country_expedition');
+		$city=$this->input->post('city');
+		$address=$this->input->post('address');
+		$telephone_1=$this->input->post('telephone_1');
+		$telephone_2=$this->input->post('telephone_2');
+		$email=$this->input->post('email');
+		$company=$this->input->post('company');
+		$position=$this->input->post('position');
+		$vehicle=$this->input->post('vehicle');
+		$registration=$this->input->post('registration');
+		$observations=$this->input->post('observations');
+
+		$updateID=$this->input->post('id');
+
+
+		$updateData=array(
+
+			'name'=>$guest_name,
+			'surname' =>$guest_surname,
+			'sex'=>$sex,
+			'dob'=>$dob,
+			'marital_status'=>$martial_status,
+			'nationality'=>$nationality,
+			'document_type'=>$guest_doc_type,
+			'number'=>$number,
+			'country'=>$country_expedition,
+			'city'=>$city,
+			'address'=>$address,
+			'telephone'=>$telephone_1,
+			'telephone2'=>$telephone_2,
+			'mail'=>$email,
+			'company'=>$company,
+			'position'=>$position,
+			'vehicle'=>$vehicle,
+			'registration'=>$registration,
+			'observations'=>$observations
+
+		);
+
+
+        $tbl_name='guest';
+
+		$this->load->model('General_Model');
+		$result=$this->General_Model->update($updateData,$updateID,$tbl_name);
+
+		if(!empty($result)){
+
+			$this->session->set_flashdata('success', "Record Update Successfully !!"); 
+			redirect('guest/GuestController/showGuestsList');
+
+		}
+		else{
+
+			$this->session->set_flashdata('error',"Sorry,Record Update failed.");
+			redirect('guest/GuestController/showGuestsList');
+		}
+
+
+
+
+	}
+
+/*End Update Guests    */
 
 
 /*Start Delete Employee*/
@@ -124,13 +221,13 @@ public function showGuestsList(){
 		if(!empty($result)){
 
 			$this->session->set_flashdata('success', "Record Delete Successfully !!"); 
-			redirect('EmployeController/showEmployeeList');
+			redirect('GuestController/showGuestsList');
 
 		}
 		else{
 
 			$this->session->set_flashdata('error',"Sorry,Record Delete failed.");
-			redirect('EmployeController/showEmployeeList');
+			redirect('GuestController/showGuestsList');
 		}
 
 

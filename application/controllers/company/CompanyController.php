@@ -15,9 +15,12 @@ public function __construct(){
 }
 
 
-public function index(){
+public function add_new(){
 
-	$this->load->view('company_profile');
+
+	$this->load->view("header");
+	$this->load->view("company/company_profile");
+	$this->load->view("footer");
 
 
 }
@@ -89,13 +92,13 @@ public function add(){
 		if(!empty($result)){
 
 			$this->session->set_flashdata('success', "Record Inserted Successfully !!"); 
-			$this->load->view('employe_profile');
+			redirect("company/CompanyController/add_new");
 
 		}
 		else{
 
 			$this->session->set_flashdata('error',"Sorry,Record Inserted failed.");
-			$this->load->view('employe_profile');
+			redirect("company/CompanyController/add_new");
 		}
 
 	}
@@ -113,7 +116,9 @@ public function add(){
 
 		$data['fields']=$this->CompanyModel->getItemData($id);
 
-		$this->load->view('company_edit',$data);
+        $this->load->view("header");
+		$this->load->view('company/company_edit',$data);
+		$this->load->view("footer");
 
 
 	}
@@ -128,7 +133,7 @@ public function showCompanyList(){
 	$data['fields']=$this->CompanyModel->getListData();
 
 	$this->load->view("header");
-	$this->load->view("company_list",$data);
+	$this->load->view("company/company_list",$data);
 	$this->load->view("footer");
 
 
@@ -210,13 +215,13 @@ public function showCompanyList(){
 		if(!empty($result)){
 
 			$this->session->set_flashdata('success', "Record Update Successfully !!"); 
-			redirect('CompanyController/showCompanyList');
+			redirect('company/CompanyController/showCompanyList');
 
 		}
 		else{
 
 			$this->session->set_flashdata('error',"Sorry,Record Update failed.");
-			$this->load->view('company_profile');
+			redirect('company/CompanyController/editCompany');
 		}
 
 
@@ -237,13 +242,13 @@ public function showCompanyList(){
 		if(!empty($result)){
 
 			$this->session->set_flashdata('success', "Record Delete Successfully !!"); 
-			redirect('CompanyController/showCompanyList');
+			redirect('company/CompanyController/showCompanyList');
 
 		}
 		else{
 
 			$this->session->set_flashdata('error',"Sorry,Record Delete failed.");
-			redirect('CompanyController/showCompanyList');
+			redirect('company/CompanyController/showCompanyList');
 		}
 
 

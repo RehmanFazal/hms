@@ -47,8 +47,8 @@
 										$i=1;
 										foreach($fields as $field)
 										{
-											$edit_url='GuestController/editGuest/?id='.$field['id'];	
-											$delete_url='GuestController/deleteGuest/?id='.$field['id'];
+											$edit_url='guest/GuestController/editGuest/?id='.$field['id'];	
+											$delete_url='guest/GuestController/deleteGuest/?id='.$field['id'];
 								?>
 								<tr class="">
 									<td><?php echo $i++; ?></td>
