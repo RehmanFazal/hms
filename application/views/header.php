@@ -352,21 +352,21 @@
 				  				{
 				  					$title = "Employee";
 				  					$icon = "icon-user";
-				  					$add_url = 'employee/EmployeeController/add_employee';
+				  					$add_url = 'employee/EmployeeController/add_new';
 				  					$view_url = 'employee/EmployeeController';
 				  				}
 				  				else if($perm["perm_desc"] == "Manage Extras")
 				  				{
 				  					$title = "Extra";
 				  					$icon = "icon-adn";
-				  					$add_url = 'extras/ExtrasController/add_extra';
+				  					$add_url = 'extras/ExtrasController/add_new';
 				  					$view_url = 'extras/ExtrasController';
 				  				}
 				  				else if($perm["perm_desc"] == "Manage Guest")
 				  				{
 				  					$title = "Guest";
 				  					$icon = "icon-male";
-				  					$add_url = 'guest/GuestController/add_guest';
+				  					$add_url = 'guest/GuestController/add_new';
 				  					$view_url = 'guest/GuestController';
 				  				}
 				  ?>
@@ -397,6 +397,7 @@
                           <li><a  href="<?php echo site_url('group/GroupController') ?>">View Groups</a></li>
                       </ul>
                   </li>
+
                   <?php } ?>
               </ul>
               <!-- sidebar menu end-->
