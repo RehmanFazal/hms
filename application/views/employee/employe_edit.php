@@ -60,8 +60,8 @@
                                       <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Sex</label>
                                       <div class="col-lg-10">
                                           <select class="form-control m-bot15" name="sex" required>
-                                              <option value="0" <?php echo !empty($fields[0]['full_name'])?"selected":""; ?>>Male</option>
-                                              <option value="1" <?php echo !empty($fields[0]['full_name'])?"selected":""; ?>>Female</option>
+                                              <option value="0" <?php echo empty($fields[0]['sex'])?"selected":""; ?>>Male</option>
+                                              <option value="1" <?php echo !empty($fields[0]['sex'])?"selected":""; ?>>Female</option>
                                           </select>
                                       </div>
                                   </div>
@@ -131,7 +131,7 @@
                                            <img src="<?php echo base_url().'uploads/'.$data3->doc_type; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
                                             <input type="file" id="profile_pic" name="doc_pic" value="<?php echo $data3->doc_type; ?>">
                                             <input type="hidden" name="old_doc1" value="<?php echo $data3->doc_type; ?>">
-                                            <p class="help-block">Upload Dacument Photo.</p>
+                                            <!--<p class="help-block1">Upload Dacument Photo.</p>-->
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -151,7 +151,7 @@
                                             <img src="<?php echo base_url().'uploads/'.$data3->doc_type2; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
                                             <input type="file" id="profile_pic" name="doc_pic2" value="<?php echo $data3->doc_type2; ?>">
                                             <input type="hidden" name="old_doc2" value="<?php echo $data3->doc_type2; ?>">
-                                            <p class="help-block">Upload Dacument Photo.</p>
+                                            <!--<p class="help-block3">Upload Dacument Photo.</p>-->
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -171,7 +171,7 @@
                                            <img src="<?php echo base_url().'uploads/'.$data3->doc_type3; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
                                             <input type="file" id="profile_pic" name="doc_pic3">
                                             <input type="hidden" name="old_doc3" value="<?php echo $data3->doc_type3; ?>">
-                                            <p class="help-block">Upload Dacument Photo.</p>
+                                            <!--<p class="help-block2">Upload Dacument Photo.</p>-->
                                         </div>
                                 </div>
                                 <div class="form-group">

@@ -142,7 +142,7 @@ public function showEmployeeList(){
 
 	public function editEmploye(){
 
-		$id=$_REQUEST['id'];
+		$id = $_REQUEST['id'];
 
 
 		$data['fields']=$this->EmployeeModel->getItemData($id);
@@ -190,7 +190,7 @@ public function updateEmployee(){
 
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
-		$updateID=$this->input->post('id');
+		$updateID = $this->input->post('id');
 		$oldfile = $this->input->post('old_profile');
     	$file = $_FILES['profile_pic']['name'];
 

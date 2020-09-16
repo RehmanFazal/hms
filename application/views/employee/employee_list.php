@@ -50,8 +50,8 @@
 										foreach($fields as $field)
 										{
 
-											$edit_url='employee/EmployeController/editEmploye/?id='.$field['id'];	
-											$delete_url='employee/EmployeController/deleteEmploye/?id='.$field['id'];
+											$edit_url='employee/EmployeController/editEmploye?id='.$field['id'];
+											$delete_url='employee/EmployeController/deleteEmploye?id='.$field['id'];
 								?>
 								<tr class="">
 									<td><?php echo $i++; ?></td>

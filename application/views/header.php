@@ -344,30 +344,51 @@
 				  		{
 				  			if(in_array($perm["id"], $user_permssions))
 				  			{
-				  				$title = "User";
-				  				$icon = "icon-user-md";
-				  				$add_url = 'user/UserController/add_user';
-				  				$view_url = 'user/UserController';
+				  				$title = "";
+								$icon = "";
+								$add_url = '';
+								$view_url = '';
 				  				if($perm["perm_desc"] == "Manage Employee")
 				  				{
 				  					$title = "Employee";
 				  					$icon = "icon-user";
-				  					$add_url = 'employee/EmployeeController/add_new';
-				  					$view_url = 'employee/EmployeeController';
+				  					$add_url = 'employee/EmployeController/add_new';
+				  					$view_url = 'employee/EmployeController/showEmployeeList';
+				  				}
+				  				else if($perm["perm_desc"] == "Manage Users")
+				  				{
+				  					$title = "User";
+									$icon = "icon-user-md";
+									$add_url = 'user/UserController/add_user';
+									$view_url = 'user/UserController';
+				  				}
+				  				else if($perm["perm_desc"] == "Manage Rates")
+				  				{
+				  					$title = "Rate";
+									$icon = "icon-usd";
+									$add_url = 'user/RateController/add_rate';
+									$view_url = 'user/RateController/showRatesList';
 				  				}
 				  				else if($perm["perm_desc"] == "Manage Extras")
 				  				{
 				  					$title = "Extra";
 				  					$icon = "icon-adn";
 				  					$add_url = 'extras/ExtrasController/add_new';
-				  					$view_url = 'extras/ExtrasController';
+				  					$view_url = 'extras/ExtrasController/showExtrasList';
 				  				}
 				  				else if($perm["perm_desc"] == "Manage Guest")
 				  				{
 				  					$title = "Guest";
 				  					$icon = "icon-male";
 				  					$add_url = 'guest/GuestController/add_new';
-				  					$view_url = 'guest/GuestController';
+				  					$view_url = 'guest/GuestController/showGuestsList';
+				  				}
+				  				else if($perm["perm_desc"] == "Manage Company")
+				  				{
+				  					$title = "Company";
+				  					$icon = "icon-home";
+				  					$add_url = 'company/CompanyController/add_new';
+				  					$view_url = 'company/CompanyController/showCompanyList';
 				  				}
 				  ?>
 				  <li class="sub-menu">

@@ -12,7 +12,8 @@ class CountryController extends CI_Controller {
 		}
 	public function select_country(){
 
-		$search_value=$this->input->post('search');
+		//$search_value=$this->input->post('search');
+		$search_value=$_REQUEST['search'];
 		$result=$this->CountryModel->fetch_country($search_value);
 		$output=null;
 

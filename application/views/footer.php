@@ -152,15 +152,39 @@
 
 <script type="text/javascript">
 
-        var i=1;
+       // var i=1;
 
-        $(document).ready(function(){
+        $(document).ready(function() {
 
-            $(".clone_btn").click(function(){
+			var contactPerson = '<div class="form-group" id="company_contact">';
+			contactPerson += '<label class="col-sm-2 control-label label_contact">Contact in company</label>';
+            contactPerson += '<div class="col-sm-3">';
+            contactPerson += '<input type="text" placeholder="John Doe"  class="form-control" name="contact_name[]">';
+            contactPerson += '</div>';
+            contactPerson += '<div class="col-sm-3">';
+            contactPerson += '<input type="text" placeholder="Rank"  class="form-control" name="contact_rank[]">';
+            contactPerson += '</div>';
+            contactPerson += '<div class="col-sm-3">';
+            contactPerson += '<input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email[]">';
+            contactPerson += '</div>';
+            //contactPerson += '<div class="col-sm-1">';
+            //contactPerson += '<a class="btn btn-primary btn-sm clone_btn">';
+            //contactPerson += '<i class="icon-expand-alt" style="font-size: 20px;"></i>';
+            //contactPerson += '</a>';
+            //contactPerson += '</div>';
+            contactPerson += '</div>';
+            $(".clone_btn").click(function() {
+				let count = $("#count").val();
+				if(count > 3)
+				{
+					alert("you can't add more than three contacts");
+					return false;
+				}
+				$("#company_person").append(contactPerson);
+				$("#count").val(count + 1);
+            //$("#company_contact").clone().insertBefore("#company_contact").prop("id","company_contact"+i);
 
-            $("#company_contact").clone().insertBefore("#company_contact").prop("id","company_contact"+i);
-
-            i++;
+            //i++;
 
         });
 
