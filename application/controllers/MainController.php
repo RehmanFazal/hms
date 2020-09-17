@@ -51,9 +51,9 @@ class MainController extends CI_Controller {
 		$result['permissions'] = $this->ItemModel->loadPermissions();
 
 		$user_permissions = array();
-		if(!empty($result['id']))
+		if(!empty($result['sector']))
 		{
-			$user_permissions = $this->ItemModel->getUserPermissions($result['id']);
+			$user_permissions = $this->ItemModel->getUserPermissions($result['sector']);
 			$result['group_perms'] = !empty($user_permissions['group_perms']) ? $user_permissions['group_perms'] : '';
 		}
 

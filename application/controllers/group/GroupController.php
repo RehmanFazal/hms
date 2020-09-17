@@ -174,5 +174,15 @@ class GroupController extends CI_Controller {
 		}
 		return true;
 	}
+
+	function delete_user($id = 0)
+	{
+		if(empty($id)) return false;
+
+		if($this->ItemModel->deleteUser($id))
+		{
+			$this->index();
+		}
+	}
 }
 ?>

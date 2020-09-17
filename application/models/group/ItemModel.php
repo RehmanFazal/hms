@@ -182,6 +182,12 @@ class ItemModel extends CI_Model {
   		return $result;
   }
 
+  function deleteUser($id = 0)
+  {
+  		if(empty($id)) return false;
+  		return $this->db->delete('users', array('id' => $id));
+  }
+
 }
 
 ?>

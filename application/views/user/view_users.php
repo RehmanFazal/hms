@@ -24,6 +24,7 @@
 										foreach($fields as $field)
 										{
 											$url = 'user/UserController/add_user/'.$field['id'];
+											$delete_url = 'user/UserController/delete_user/'.$field['id'];
 								?>
 								<tr class="">
 									<td><?php echo $field['id']; ?></td>
@@ -33,6 +34,9 @@
 									<td class="center">
 										<a  href="<?php echo site_url($url) ?>">
 											<button type="button" class="btn btn-primary"><i class="icon-pencil"></i></button>
+										</a>
+										<a  href="<?php echo site_url($delete_url) ?>">
+											<button type="button" class="btn btn-danger" onclick="deleteItem('user', event)"><i class="icon-trash"></i></button>
 										</a>
 									</td>
 								</tr>

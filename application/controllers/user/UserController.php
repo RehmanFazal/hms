@@ -93,5 +93,21 @@ class UserController extends CI_Controller {
 		}
 		$this->index();
 	}
+
+	function delete_user($id = 0)
+	{
+		if(empty($id)) return false;
+
+		if($this->ItemModel->deleteUser($id))
+		{
+			$this->index();
+		}
+	}
+
+	function check_dupilcate_user_name()
+	{
+		if(empty($_REQUEST['userName'])) return false;
+		echo $this->ItemModel->checkDupilcateUserName($_REQUEST['userName']);
+	}
 }
 ?>

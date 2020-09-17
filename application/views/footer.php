@@ -23,6 +23,7 @@
     <script src="<?php echo base_url(); ?>assets/js/sparkline-chart.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/easy-pie-chart.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/count.js"></script>
+    <script src="<?php echo base_url(); ?>assets/hmsJS/generalJS.js"></script>
 
     <script type="text/javascript">
 

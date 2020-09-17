@@ -110,6 +110,29 @@ class ItemModel extends CI_Model {
 		return $response;
   }
 
+  function deleteUser($id = 0)
+  {
+  		if(empty($id)) return false;
+
+  		return $this->db->delete('users', array('id' => $id));
+  }
+
+  function checkDupilcateUserName($userName)
+  {
+  		$query = "
+			SELECT
+				COUNT(id) AS count
+			FROM
+				users
+			WHERE
+				users.user_name = '".$userName."'
+				AND users.deleted = 0";
+		$query = $this->db->query($query);
+		$row = $query->row_array();
+
+		return $row['count'];
+  }
+
 }
 
 ?>

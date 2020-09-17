@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2020 at 07:40 PM
--- Server version: 10.1.39-MariaDB
--- PHP Version: 7.3.5
+-- Generation Time: Sep 16, 2020 at 09:57 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -327,32 +327,6 @@ CREATE TABLE `company` (
   `deleted_at` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `company`
---
-
-INSERT INTO `company` (`id`, `name`, `company_name`, `rut`, `country`, `town`, `postal_code`, `telephone`, `contact_in_company`, `contact_name`, `Rank`, `email`, `contact_telephone`, `created_at`, `deleted_at`) VALUES
-(10, 'Waqas Hussain', 'Btech', 'RUT Updated', 'Argentina', 'Islamabad', '051', '3312480074', 0, 'John Doe', 'Web Developer', 'email@gmail.com', '51222222', '2020-09-03 00:19:17', 0),
-(11, 'Waqas Hussain', 'Btech', 'RUT Updated', 'Argentina', 'Islamabad', '051', '3312480074', 0, 'John Doe', 'Web Developer', 'email@gmail.com', '51222222', '2020-09-03 00:19:17', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `country`
---
-
-CREATE TABLE `country` (
-  `id` int(11) NOT NULL,
-  `country_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `country`
---
-
-INSERT INTO `country` (`id`, `country_name`) VALUES
-(1, '{\"AF\":\"Afghanistan\",\"AL\":\"Albania\",\"DZ\":\"Algeria\",\"AS\":\"American Samoa\",\"AD\":\"Andorra\",\"AO\":\"Angola\",\"AI\":\"Anguilla\",\"AQ\":\"Antarctica\",\"AG\":\"Antigua and Barbuda\",\"AR\":\"Argentina\",\"AM\":\"Armenia\",\"AW\":\"Aruba\",\"AU\":\"Australia\",\"AT\":\"Austria\",\"AZ\":\"Azerbaijan');
-
 -- --------------------------------------------------------
 
 --
@@ -364,16 +338,16 @@ CREATE TABLE `employee` (
   `profile_pic` varchar(100) NOT NULL,
   `full_name` varchar(30) NOT NULL,
   `sex` tinyint(1) NOT NULL,
-  `dob` text NOT NULL,
+  `dob` date NOT NULL,
   `id_no` int(11) NOT NULL,
-  `telephone_no` int(11) NOT NULL,
-  `telephone_no2` int(11) NOT NULL,
+  `telephone_no` varchar(20) NOT NULL,
+  `telephone_no2` varchar(20) NOT NULL,
   `medical_coverage` text NOT NULL,
   `mail` varchar(30) NOT NULL,
   `physical_address` text NOT NULL,
   `document_type` varchar(100) NOT NULL,
   `document_expiration` varchar(100) NOT NULL,
-  `document_name` varchar(100) NOT NULL,
+  `document_name` varchar(255) NOT NULL,
   `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -383,7 +357,64 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `profile_pic`, `full_name`, `sex`, `dob`, `id_no`, `telephone_no`, `telephone_no2`, `medical_coverage`, `mail`, `physical_address`, `document_type`, `document_expiration`, `document_name`, `creation_date`, `deleted`) VALUES
-(9, 'collect10.png', 'Waqas Hussain', 0, '22/11/1884', 1231231231, 2147483647, 2147483647, 'Yes', 'email@gmail.com', 'Karachi', '{\"doc_type\":\"0\",\"doc_type2\":\"1\",\"doc_type3\":\"0\"}', '{\"expire_date\":\"22/05/2020\",\"expire_date2\":\"22/05/2020\",\"expire_date3\":\"22/05/2020\"}', '{\"doc_type\":\"collect17.png\",\"doc_type2\":\"collect18.png\",\"doc_type3\":\"collect19.png\"}', '2020-09-02 00:34:49', 0);
+(1, 'FPS-3625_(1)5.jpg', 'Fazal Rehman', 1, '2020-09-01', 1235, '03301234567', '03301234567', 'nil', 'fazal@abc.com', '03301234567', '{\"doc_type\":\"0\",\"doc_type2\":\"1\",\"doc_type3\":\"2\"}', '{\"expire_date\":\"2020-09-16\",\"expire_date2\":\"2020-09-17\",\"expire_date3\":\"2020-09-18\"}', '{\"doc_type\":\"fav14.jpg\",\"doc_type2\":\"FPS-3625_(1)6.jpg\",\"doc_type3\":\"FPS-3625_(1)6.jpg\"}', '2020-09-16 23:23:39', 0),
+(2, 'fav16.jpg', 'Admin1', 1, '2020-09-17', 2147483647, '03301234567', '03301234567', 'nil', 'fazal@abc.com', 'wewweewq', '{\"doc_type\":\"1\",\"doc_type2\":\"0\",\"doc_type3\":\"2\"}', '{\"expire_date\":\"2020-09-02\",\"expire_date2\":\"2020-09-18\",\"expire_date3\":\"2020-09-01\"}', '{\"doc_type\":\"FPS-3625_(1)7.jpg\",\"doc_type2\":\"fav17.jpg\",\"doc_type3\":\"FPS-3625_(1)8.jpg\"}', '2020-09-16 23:43:39', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee1`
+--
+
+CREATE TABLE `employee1` (
+  `id` int(11) NOT NULL,
+  `profile_pic` varchar(100) NOT NULL,
+  `full_name` varchar(30) NOT NULL,
+  `sex` tinyint(1) NOT NULL,
+  `dob` datetime NOT NULL,
+  `id_no` int(11) NOT NULL,
+  `telephone_no` int(11) NOT NULL,
+  `telephone_no2` int(11) NOT NULL,
+  `medical_coverage` text NOT NULL,
+  `mail` varchar(30) NOT NULL,
+  `physical_address` text NOT NULL,
+  `document_type` tinyint(1) NOT NULL,
+  `document_expiration` datetime NOT NULL,
+  `document_name` varchar(255) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `deleted` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee1`
+--
+
+INSERT INTO `employee1` (`id`, `profile_pic`, `full_name`, `sex`, `dob`, `id_no`, `telephone_no`, `telephone_no2`, `medical_coverage`, `mail`, `physical_address`, `document_type`, `document_expiration`, `document_name`, `creation_date`, `deleted`) VALUES
+(2, 'FPS-3625_(1)2.jpg', 'Fazal Rehman', 0, '2020-09-03 00:00:00', 1234567891, 2147483647, 2147483647, 'nil', 'fazal@abc.com', 'as', 0, '2020-09-11 00:00:00', '0', '2020-09-08 00:00:00', 0),
+(3, 'fav1.jpg', 'Admin', 0, '2020-09-05 00:00:00', 32, 2147483647, 2147483647, 'nil', 'fazal@abc.com', '03301234567', 0, '0000-00-00 00:00:00', '0', '0000-00-00 00:00:00', 0),
+(4, 'FPS-3625_(1)3.jpg', 'Admin1', 0, '2020-09-05 00:00:00', 3232, 2147483647, 2147483647, 'nil', 'fazal@abc.com', 'sdfsfd', 0, '0000-00-00 00:00:00', '{\"doc_type\":\"fav12.jpg\",\"doc_type2\":\"FPS-3625_(1)4.jpg\",\"doc_type3\":\"fav13.jpg\"}', '0000-00-00 00:00:00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `extras`
+--
+
+CREATE TABLE `extras` (
+  `id` int(11) NOT NULL,
+  `extra_name` varchar(100) NOT NULL,
+  `currency` tinyint(1) NOT NULL,
+  `unit_price` varchar(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `extras`
+--
+
+INSERT INTO `extras` (`id`, `extra_name`, `currency`, `unit_price`, `created_at`, `deleted_at`) VALUES
+(3, 'abc', 1, '60', '2020-09-16 18:51:27', '2020-09-16 18:51:15');
 
 -- --------------------------------------------------------
 
@@ -408,9 +439,11 @@ INSERT INTO `group_permission` (`group_id`, `perm_id`) VALUES
 (3, 3),
 (4, 2),
 (4, 5),
+(1, 6),
 (1, 2),
 (1, 4),
 (1, 3),
+(1, 5),
 (1, 1);
 
 -- --------------------------------------------------------
@@ -432,7 +465,16 @@ CREATE TABLE `group_sub_blocklist` (
 INSERT INTO `group_sub_blocklist` (`group_id`, `perm_id`, `sub_perm_id`) VALUES
 (2, 2, 6),
 (2, 1, 1),
-(2, 1, 3);
+(2, 1, 3),
+(1, 6, 17),
+(1, 6, 18),
+(1, 2, 6),
+(1, 4, 10),
+(1, 4, 12),
+(1, 3, 7),
+(1, 3, 8),
+(1, 5, 15),
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -445,7 +487,7 @@ CREATE TABLE `guest` (
   `name` varchar(20) NOT NULL,
   `surname` varchar(20) NOT NULL,
   `sex` tinyint(1) NOT NULL,
-  `dob` text NOT NULL,
+  `dob` date NOT NULL,
   `marital_status` tinyint(1) NOT NULL,
   `nationality` text NOT NULL,
   `document_type` tinyint(1) NOT NULL,
@@ -455,7 +497,7 @@ CREATE TABLE `guest` (
   `address` text NOT NULL,
   `telephone` varchar(20) NOT NULL,
   `telephone2` varchar(20) NOT NULL,
-  `mail` varchar(20) NOT NULL,
+  `mail` varchar(100) NOT NULL,
   `company` varchar(20) NOT NULL,
   `position` varchar(20) NOT NULL,
   `vehicle` varchar(20) NOT NULL,
@@ -470,8 +512,7 @@ CREATE TABLE `guest` (
 --
 
 INSERT INTO `guest` (`id`, `name`, `surname`, `sex`, `dob`, `marital_status`, `nationality`, `document_type`, `number`, `country`, `city`, `address`, `telephone`, `telephone2`, `mail`, `company`, `position`, `vehicle`, `registration`, `observations`, `creation_date`, `deleted`) VALUES
-(3, 'Waqas ', 'Hussain', 0, '22/08/1994', 0, 'Argenteno', 0, 2147483647, '0', '0', 'Islamabad Pakistan', '3312480074', '51222222', 'email@gmail.com', 'Mattress', 'Software Engineer', 'BMW', 'BMW-1234', 'Obeservation', '2020-09-02 23:39:08', 0),
-(4, 'Waqas ', 'Hussain', 0, '22/08/1994', 0, 'Argenteno', 0, 2147483647, '0', '0', 'Islamabad Pakistan', '3312480074', '51222222', 'email@gmail.com', 'Mattress', 'Software Engineer', 'BMW', 'BMW-1234', 'Obeservation', '2020-09-02 23:39:08', 0);
+(1, 'fazal', 'rehman', 1, '2020-09-05', 1, 'Pakistan', 1, 789, 'rty', 'lov', 'jkjh', '786', '786', 'frehman1993@outlook.com', 'as', 'sasa', 'sasa', 'sasa', 'kjkjk', '2020-09-16 23:59:56', 0);
 
 -- --------------------------------------------------------
 
@@ -493,7 +534,8 @@ INSERT INTO `permissions` (`id`, `perm_desc`) VALUES
 (2, 'Manage Employee'),
 (3, 'Manage Guest'),
 (4, 'Manage Extras'),
-(5, 'Manage Rates');
+(5, 'Manage Rates'),
+(6, 'Manage Company');
 
 -- --------------------------------------------------------
 
@@ -516,7 +558,19 @@ INSERT INTO `permission_subpermission` (`perm_id`, `sub_perm_id`) VALUES
 (1, 3),
 (2, 4),
 (2, 5),
-(2, 6);
+(2, 6),
+(3, 7),
+(3, 8),
+(3, 9),
+(4, 10),
+(4, 11),
+(4, 12),
+(5, 13),
+(5, 14),
+(5, 15),
+(6, 16),
+(6, 17),
+(6, 18);
 
 -- --------------------------------------------------------
 
@@ -540,7 +594,19 @@ INSERT INTO `subpermissions` (`id`, `sub_permission`, `sub_perm_label`) VALUES
 (3, 'Delete User', 'Delete User'),
 (4, 'Add Employee', 'Add Employee'),
 (5, 'Edit Employee', 'Edit Employee'),
-(6, 'Delete Employee', 'Delete Employee');
+(6, 'Delete Employee', 'Delete Employee'),
+(7, 'Add Extras', 'Add Extras'),
+(8, 'Edit Extras', 'Edit Extras'),
+(9, 'Delete Extras', 'Delete Extras'),
+(10, 'Add Guest', 'Add Guest'),
+(11, 'Edit Guest', 'Edit Guest'),
+(12, 'Delete Guest', 'Delete Guest'),
+(13, 'Add Rates', 'Add Rates'),
+(14, 'Edit Rates', 'Edit Rates'),
+(15, 'Delete Rates', 'Delete Rates'),
+(16, 'Add Company', 'Add Company'),
+(17, 'Edit Company', 'Edit Company'),
+(18, 'Delete Company', 'Delete Company');
 
 -- --------------------------------------------------------
 
@@ -567,8 +633,7 @@ INSERT INTO `users` (`id`, `full_name`, `user_name`, `password`, `sector`, `site
 (2, 'Governor', 'governor', '123', 2, 1, 0),
 (3, 'Reception', 'reception', '123', 2, 1, 0),
 (4, 'Manager', 'manager', '123', 2, 1, 0),
-(5, 'Admin1', 'admin1', '12345', 2, 1, 0),
-(6, 'test', 'test', 'admin', 4, 1, 0);
+(5, 'Admin1', 'admin1', '12345', 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -597,27 +662,27 @@ INSERT INTO `user_role` (`id`, `role`, `deleted`) VALUES
 --
 
 --
--- Indexes for table `apps_countries_detailed`
---
-ALTER TABLE `apps_countries_detailed`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `company`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `country`
---
-ALTER TABLE `country`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `employee`
 --
 ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee1`
+--
+ALTER TABLE `employee1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `extras`
+--
+ALTER TABLE `extras`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -655,52 +720,52 @@ ALTER TABLE `user_role`
 --
 
 --
--- AUTO_INCREMENT for table `apps_countries_detailed`
---
-ALTER TABLE `apps_countries_detailed`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
-
---
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `country`
---
-ALTER TABLE `country`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `employee1`
+--
+ALTER TABLE `employee1`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `extras`
+--
+ALTER TABLE `extras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `subpermissions`
 --
 ALTER TABLE `subpermissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_role`
