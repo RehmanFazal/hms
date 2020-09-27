@@ -55,7 +55,7 @@
 
 								?>
 								<tr class="">
-									<td><?php echo $i++; ?></td>
+									<td><?php echo $i; ?></td>
 									<td><?php echo $field['name']; ?></td>
 									<td><?php echo $field['company_name']; ?></td>
 									<td><?php echo $field['country']; ?></td>
@@ -70,6 +70,7 @@
 									</td>
 								</tr>
 								<?php
+											$i++;
 										}
 									}
 								?>

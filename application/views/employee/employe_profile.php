@@ -63,7 +63,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">I.D number</label>
                                           <div class="col-sm-10">
-                                              <input type="number" placeholder=""  class="form-control" name="id_nos" maxlength="11" required>
+                                              <input type="text" placeholder=""  class="form-control" name="id_nos" maxlength="11" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -101,7 +101,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Dacuments One</label>
                                         <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type" required>
+                                              <select class="form-control m-bot15" name="doc_type">
                                                   <option value="0">Health document</option>
                                                   <option value="1">Food Handling certificate</option>
                                                   <option value="2">Identity Card</option>
@@ -112,14 +112,14 @@
                                             <input type="date" placeholder="Expire date"  class="form-control" name="expire_date" required>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic" required>
+                                            <input type="file" id="profile_pic" name="doc_pic">
                                             <p class="help-block">Upload Dacument Photo.</p>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Dacuments Two</label>
                                         <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type_2" required>
+                                              <select class="form-control m-bot15" name="doc_type_2">
                                                   <option value="0">Health document</option>
                                                   <option value="1">Food Handling certificate</option>
                                                   <option value="2">Identity Card</option>
@@ -127,17 +127,17 @@
                                              <p class="help-block">Document Type</p>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="date" placeholder=""  class="form-control" name="expire_date2" required>
+                                            <input type="date" placeholder=""  class="form-control" name="expire_date2">
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="file" id="profile_pic" name="doc_pic2" required>
+                                            <input type="file" id="profile_pic" name="doc_pic2">
                                             <p class="help-block">Upload Dacument Photo.</p>
                                         </div>
                                   </div>
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Dacuments Three</label>
                                         <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type_3" required>
+                                              <select class="form-control m-bot15" name="doc_type_3">
                                                   <option value="0">Health document</option>
                                                   <option value="1">Food Handling certificate</option>
                                                   <option value="2">Identity Card</option>

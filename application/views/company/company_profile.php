@@ -51,7 +51,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Country</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" id="country_select" class="form-control" name="country" required>
+                                            <input type="text" placeholder="Uruguay" id="country_select" class="form-control" name="country" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -97,16 +97,26 @@
                                   <div id="company_person">
                                     <div class="form-group" id="company_contact">
                                         <label class="col-sm-2 control-label label_contact">Contact in company</label>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
+
+                                            <span class="help-inline">Contact Name</span>
                                             <input type="text" placeholder="John Doe"  class="form-control" name="contact_name[]">
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
+                                            <span class="help-inline">Contact Rank</span>
                                             <input type="text" placeholder="Rank"  class="form-control" name="contact_rank[]">
                                         </div>
                                         <div class="col-sm-3">
+                                              <span class="help-inline">Contact Email</span>
                                               <input type="email" placeholder="johndoe@email.com"  class="form-control" name="contact_email[]">
                                         </div>
+                                        <div class="col-sm-2">
+                                          <span class="help-inline">Telephone</span>
+                                          <input type="text" placeholder="(999) 999-999" data-mask="(999) 999-9999" class="form-control" name="contact_telephone[]">
+                                        </div>
                                         <div class="col-sm-1">
+
+                                          <br>
                                           <a class="btn btn-primary btn-sm clone_btn">
                                              <i class="icon-expand-alt" style="font-size: 20px;"></i>
                                           </a> 
@@ -114,12 +124,12 @@
                                     </div>
                                 </div>
                                   <div class="form-group">
-                                      <label class="col-sm-2 control-label">Telephone / Internal</label>
+                               <!--        <label class="col-sm-2 control-label">Telephone / Internal</label>
                                        <div class="col-sm-10">
                                           <input type="text" placeholder="" data-mask="(999) 999-9999" class="form-control" name="contact_telephone">
                                             <span class="help-inline">(999) 999-9999</span>
                                         </div>
-                                  </div>
+                                  </div> -->
                                 <div class="form-group">
                                     <div class="col-sm-2"></div>
                                     <div class="col-sm-10">

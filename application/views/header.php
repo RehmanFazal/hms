@@ -383,7 +383,7 @@
 				  					$add_url = 'guest/GuestController/add_new';
 				  					$view_url = 'guest/GuestController/showGuestsList';
 				  				}
-				  				else if($perm["perm_desc"] == "Manage Company")
+				  				else if($perm["perm_desc"] == "Manage Companys")
 				  				{
 				  					$title = "Company";
 				  					$icon = "icon-home";
@@ -399,6 +399,7 @@
                       <ul class="sub">
                           <li><a  href="<?php echo site_url($add_url); ?>">Add <?php echo $title; ?></a></li>
                           <li><a  href="<?php echo site_url($view_url); ?>">View <?php echo $title; ?></a></li>
+
                       </ul>
                   </li>
 				  <?php
@@ -420,6 +421,37 @@
                   </li>
 
                   <?php } ?>
+                  <li class="sub-menu dcjq-parent-li">
+                      <a href="javascript:;" class="dcjq-parent">
+                          <i class="icon-home"></i>
+                          <span>Companys</span>
+                      <span class="dcjq-icon"></span></a>
+                      <ul class="sub" style="display: none;">
+                          <li><a href="https://hashirboutique.com/hms/index.php/company/CompanyController/add_new">Add Company</a></li>
+                          <li><a href="https://hashirboutique.com/hms/index.php/company/CompanyController/showCompanyList">View Company</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu dcjq-parent-li">
+                      <a href="javascript:;" class="dcjq-parent">
+                          <i class="icon-adn"></i>
+                          <span>Extras</span>
+                      <span class="dcjq-icon"></span></a>
+                      <ul class="sub" style="display: none;">
+                          <li><a href="https://hashirboutique.com/hms/index.php/extras/ExtrasController/add_new">Add Extra</a></li>
+                          <li><a href="https://hashirboutique.com/hms/index.php/extras/ExtrasController/showExtrasList">View Extra</a></li>
+                      </ul>
+                  </li>
+    
+                  <li class="sub-menu dcjq-parent-li">
+                      <a href="javascript:;" class="dcjq-parent">
+                          <i class="icon-group"></i>
+                          <span>Groups</span>
+                      <span class="dcjq-icon"></span></a>
+                      <ul class="sub" style="display: none;">
+                          <li><a href="https://hashirboutique.com/hms/index.php/group/GroupController/add_group">Add Group</a></li>
+                          <li><a href="https://hashirboutique.com/hms/index.php/group/GroupController">View Groups</a></li>
+                      </ul>
+                  </li>
               </ul>
               <!-- sidebar menu end-->
           </div>

@@ -74,7 +74,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">I.D number</label>
                                           <div class="col-sm-10">
-                                              <input type="number" placeholder=""  class="form-control" name="id_nos" maxlength="11" value="<?php echo !empty($fields[0]['id_no'])?$fields[0]['id_no']:""; ?>" required>
+                                              <input type="text" placeholder=""  class="form-control" name="id_nos" maxlength="11" value="<?php echo !empty($fields[0]['id_no'])?$fields[0]['id_no']:""; ?>" required>
                                         </div>
                                   </div>
                                   <div class="form-group">
@@ -117,7 +117,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Dacuments One</label>
                                         <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type" required>
+                                              <select class="form-control m-bot15" name="doc_type">
                                                   <option value="0" <?php if($data->doc_type==0){echo "selected";}else{echo "";} ?>>Health document</option>
                                                   <option value="1" <?php if($data->doc_type==1){echo "selected";}else{echo "";} ?>>Food Handling certificate</option>
                                                   <option value="2" <?php if($data->doc_type==2){echo "selected";}else{echo "";}?>>Identity Card</option>
@@ -125,7 +125,7 @@
                                              <p class="help-block">Document Type</p>
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="date" placeholder="Expire date"  class="form-control" name="expire_date" value="<?php echo date('Y-m-d',strtotime($data2->expire_date)); ?>" required>
+                                            <input type="date" placeholder="Expire date"  class="form-control" name="expire_date" value="<?php echo date('Y-m-d',strtotime($data2->expire_date)); ?>">
                                         </div>
                                         <div class="col-sm-3">
                                            <img src="<?php echo base_url().'uploads/'.$data3->doc_type; ?>" style="max-width:85px;width:100%;border: 1px solid #b5b1b1;">
@@ -137,7 +137,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Dacuments Two</label>
                                         <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type_2" required>
+                                              <select class="form-control m-bot15" name="doc_type_2">
                                                   <option value="0" <?php if($data->doc_type2==0){echo "selected";}else{echo "";} ?>>Health document</option>
                                                   <option value="1" <?php if($data->doc_type2==1){echo "selected";}else{echo "";} ?>>Food Handling certificate</option>
                                                   <option value="2" <?php if($data->doc_type2==2){echo "selected";}else{echo "";}?>>Identity Card</option>
@@ -157,7 +157,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Dacuments Three</label>
                                         <div class="col-sm-3">
-                                              <select class="form-control m-bot15" name="doc_type_3" required>
+                                              <select class="form-control m-bot15" name="doc_type_3">
                                                    <option value="0" <?php if($data->doc_type3==0){echo "selected";}else{echo "";} ?>>Health document</option>
                                                   <option value="1" <?php if($data->doc_type3==1){echo "selected";}else{echo "";} ?>>Food Handling certificate</option>
                                                   <option value="2" <?php if($data->doc_type3==2){echo "selected";}else{echo "";}?>>Identity Card</option>

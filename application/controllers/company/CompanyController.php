@@ -37,10 +37,13 @@ public function add(){
 		$postal_code=$this->input->post('postal_code');
 		$telephone=$this->input->post('telephone');
 		$contact_in_company=$this->input->post('contact_in_company');
+
 		$contact_name=$this->input->post('contact_name');
 		$contact_rank=$this->input->post('contact_rank');
 		$contact_email=$this->input->post('contact_email');
-		$c_name=null;$c_rank=null;$c_email=null;
+
+		$contact_telephone=$this->input->post('contact_telephone');
+		$c_name=null;$c_rank=null;$c_email=null;$c_telephone=null;
 
 
 
@@ -48,20 +51,24 @@ public function add(){
 			$c_name.=$contact_name[$i].",";
 			$c_rank.=$contact_rank[$i].",";
 			$c_email.=$contact_email[$i].",";
+			$c_telephone.=$contact_telephone[$i].",";
 			# code...
 		}
 
 		$c_name=rtrim($c_name,",");
 		$c_rank=rtrim($c_rank,",");
 		$c_email=rtrim($c_email,",");
+		$c_telephone=rtrim($c_telephone,",");
 
 		$c_name=explode(",",$c_name);
 		$c_rank=explode(",",$c_rank);
 		$c_email=explode(",",$c_email);
+		$c_telephone=explode(",",$c_telephone);
 
 		$c_name=json_encode($c_name);
 		$c_rank=json_encode($c_rank);
 		$c_email=json_encode($c_email);
+		$c_telephone=json_encode($c_telephone);
 		
 	
 		$contact_telephone=$this->input->post('contact_telephone');
@@ -79,7 +86,7 @@ public function add(){
 			'contact_name'=>$c_name,
 			'Rank'=>$c_rank,
 			'email'=>$c_email,
-			'contact_telephone'=>$contact_telephone
+			'contact_telephone'=>$c_telephone
 
 		);
 
@@ -160,28 +167,32 @@ public function showCompanyList(){
 		$contact_rank=$this->input->post('contact_rank');
 		$contact_email=$this->input->post('contact_email');
 
-		$c_name=null;$c_rank=null;$c_email=null;
+		$contact_telephone=$this->input->post('contact_telephone');
+		$c_name=null;$c_rank=null;$c_email=null;$c_telephone=null;
 
 		
-
-		for($i=0;$i<count($contact_name);$i++) {
+	for($i=0;$i<count($contact_name);$i++) {
 			$c_name.=$contact_name[$i].",";
 			$c_rank.=$contact_rank[$i].",";
 			$c_email.=$contact_email[$i].",";
+			$c_telephone.=$contact_telephone[$i].",";
 			# code...
 		}
 
 		$c_name=rtrim($c_name,",");
 		$c_rank=rtrim($c_rank,",");
 		$c_email=rtrim($c_email,",");
+		$c_telephone=rtrim($c_telephone,",");
 
 		$c_name=explode(",",$c_name);
 		$c_rank=explode(",",$c_rank);
 		$c_email=explode(",",$c_email);
+		$c_telephone=explode(",",$c_telephone);
 
 		$c_name=json_encode($c_name);
 		$c_rank=json_encode($c_rank);
 		$c_email=json_encode($c_email);
+		$c_telephone=json_encode($c_telephone);
 		
 
 
@@ -202,7 +213,7 @@ public function showCompanyList(){
 			'contact_name'=>$c_name,
 			'Rank'=>$c_rank,
 			'email'=>$c_email,
-			'contact_telephone'=>$contact_telephone
+			'contact_telephone'=>$c_telephone
 
 		);
 

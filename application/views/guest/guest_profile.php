@@ -72,7 +72,7 @@
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">Nationality</label>
                                         <div class="col-sm-10">
-                                            <input type="text" placeholder="Argentino" class="form-control" name="nationality" id="country_select" required>
+                                            <input type="text" placeholder="Uruguay" class="form-control" name="nationality" id="country_select" required>
                                         </div>
                                   </div>
 
@@ -110,7 +110,7 @@
                                             <input type="text" placeholder="Argentino" class="form-control" name="country_expedition" id="country_select" required>
                                         </div>
                                   </div>
-                                          <div class="form-group">
+                                 <!--          <div class="form-group">
                                      <label class="col-sm-2 control-label"></label>
                                      <div class="col-sm-10">
                                         <div class="country_dropdown">
@@ -119,7 +119,7 @@
                                           </ul>
                                         </div>
                                      </div>
-                                  </div>
+                                  </div> -->
                                   <div class="form-group">
                                       <label class="col-sm-2 control-label">City</label>
                                         <div class="col-sm-10">
