@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 16, 2020 at 09:57 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Host: localhost:3306
+-- Generation Time: Sep 27, 2020 at 02:26 PM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hms`
+-- Database: `hashirbo_hms`
 --
 
 -- --------------------------------------------------------
@@ -320,12 +320,28 @@ CREATE TABLE `company` (
   `telephone` varchar(11) NOT NULL,
   `contact_in_company` tinyint(1) NOT NULL,
   `contact_name` varchar(100) NOT NULL,
-  `Rank` varchar(55) NOT NULL,
-  `email` varchar(55) NOT NULL,
-  `contact_telephone` varchar(11) NOT NULL,
+  `Rank` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contact_telephone` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted_at` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`id`, `name`, `company_name`, `rut`, `country`, `town`, `postal_code`, `telephone`, `contact_in_company`, `contact_name`, `Rank`, `email`, `contact_telephone`, `created_at`, `deleted_at`) VALUES
+(9, 'Waqas Hussain', 'Mattress', 'RUT', 'Pakistan', 'Islamabad', '051', '3312480074', 0, '[\"waqas2\"]', '[\"51222222\"]', '[\"email@gmail.com\"]', '[\"51222222\"]', '2020-09-18 22:21:19', 0),
+(10, 'Waqas Hussain', 'Ahmad Estate Rawalpindi', 'RUT', 'Pakistan', 'Rawalpindi', '051', '51222222', 0, '[\"waqas\",\"waqas3\",\"waqas4\"]', '[\"software\",\"software3\",\"software4\"]', '[\"email@gmail.com\",\"ema33il@gmail.com\",\"email5@gmail.com\"]', '[\"51222222\",\"12312412\",\"51222222\"]', '2020-09-18 22:24:41', 0),
+(11, 'Waqas Hussain', 'Mattress2', 'RUT', 'Pakistan', 'Islamabad', '051', '3312480074', 0, '[\"waqas\",\"waqas2\",\"waqas\"]', '[\"email@gmail.com\",\"email2@gmail.com\",\"software\"]', '[\"email@gmail.com\",\"email2@gmail.com\",\"email@gmail.com\"]', '[\"51222222\",\"1113122\",\"51222222\"]', '2020-09-18 22:41:52', 0),
+(13, 'prueba', 'Prueba 123', '21152879001', 'Uruguay', 'Montevideo', '', '099123123', 0, '[\"juan\",\"Pepito\"]', '[\"099999999\",\"Pagos\"]', '[\"juan@prueba.com\",\"hola@gmail.com\"]', '[\"099999999\",\"12345678\"]', '2020-09-18 21:33:02', 0),
+(15, 'Waqas Hussain', 'Mattress', 'RUTahdahdkhak', 'Pakistan', 'Islamabad', '2312312', '3312480074', 0, '[\"waqas\"]', '[\"software\"]', '[\"email@gmail.com\"]', '[\"51222222\"]', '2020-09-24 21:12:52', 0),
+(16, 'Cortina', 'Cortinas SA', '123456789080', 'BRASil', 'brasilia', '34343435', '23321334', 0, '[\"\"]', '[\"\"]', '[\"\"]', '[\"\"]', '2020-09-25 01:25:01', 0),
+(17, 'Prueba', 'Prueba SA', '211528790012', 'Uruguay', 'Montevideo', '', '099999123', 0, '[\"\"]', '[\"\"]', '[\"\"]', '[\"\"]', '2020-09-25 03:29:38', 0),
+(18, 'TETRIS', 'Tetris SA ', '1111222233334444', 'Uruguay', 'San José', '112222', '44447777', 0, '[\"pepito\",\"Pablito\",\"MARTITA\"]', '[\"jefe\",\"secretario\",\"contadora\"]', '[\"pepito@1234\",\"pablito@1111\",\"martita@2222\"]', '[\"11111\",\"444444\",\"22222\"]', '2020-09-25 23:46:51', 0),
+(19, 'dfds', 'dfsdf', '2312312412412', 'ecuad', 'wwew', '', '232312', 0, '[\"\"]', '[\"\"]', '[\"\"]', '[\"\"]', '2020-09-25 23:56:34', 0),
+(20, 'borrrarrrrrrr', 'borrarrrr', '2387237213231', 'Argentina', '233f', '3432423', '213124124', 0, '[\"\"]', '[\"\"]', '[\"\"]', '[\"\"]', '2020-09-25 23:57:14', 0);
 
 -- --------------------------------------------------------
 
@@ -339,7 +355,7 @@ CREATE TABLE `employee` (
   `full_name` varchar(30) NOT NULL,
   `sex` tinyint(1) NOT NULL,
   `dob` date NOT NULL,
-  `id_no` int(11) NOT NULL,
+  `id_no` varchar(20) NOT NULL,
   `telephone_no` varchar(20) NOT NULL,
   `telephone_no2` varchar(20) NOT NULL,
   `medical_coverage` text NOT NULL,
@@ -357,8 +373,15 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `profile_pic`, `full_name`, `sex`, `dob`, `id_no`, `telephone_no`, `telephone_no2`, `medical_coverage`, `mail`, `physical_address`, `document_type`, `document_expiration`, `document_name`, `creation_date`, `deleted`) VALUES
-(1, 'FPS-3625_(1)5.jpg', 'Fazal Rehman', 1, '2020-09-01', 1235, '03301234567', '03301234567', 'nil', 'fazal@abc.com', '03301234567', '{\"doc_type\":\"0\",\"doc_type2\":\"1\",\"doc_type3\":\"2\"}', '{\"expire_date\":\"2020-09-16\",\"expire_date2\":\"2020-09-17\",\"expire_date3\":\"2020-09-18\"}', '{\"doc_type\":\"fav14.jpg\",\"doc_type2\":\"FPS-3625_(1)6.jpg\",\"doc_type3\":\"FPS-3625_(1)6.jpg\"}', '2020-09-16 23:23:39', 0),
-(2, 'fav16.jpg', 'Admin1', 1, '2020-09-17', 2147483647, '03301234567', '03301234567', 'nil', 'fazal@abc.com', 'wewweewq', '{\"doc_type\":\"1\",\"doc_type2\":\"0\",\"doc_type3\":\"2\"}', '{\"expire_date\":\"2020-09-02\",\"expire_date2\":\"2020-09-18\",\"expire_date3\":\"2020-09-01\"}', '{\"doc_type\":\"FPS-3625_(1)7.jpg\",\"doc_type2\":\"fav17.jpg\",\"doc_type3\":\"FPS-3625_(1)8.jpg\"}', '2020-09-16 23:43:39', 0);
+(1, 'FPS-3625_(1)5.jpg', 'Fazal Rehman', 1, '2020-09-01', '1235', '03301234567', '03301234567', 'nil', 'fazal@abc.com', '03301234567', '{\"doc_type\":\"0\",\"doc_type2\":\"1\",\"doc_type3\":\"2\"}', '{\"expire_date\":\"2020-09-16\",\"expire_date2\":\"2020-09-17\",\"expire_date3\":\"2020-09-18\"}', '{\"doc_type\":\"fav14.jpg\",\"doc_type2\":\"FPS-3625_(1)6.jpg\",\"doc_type3\":\"FPS-3625_(1)6.jpg\"}', '2020-09-16 23:23:39', 0),
+(2, 'fav16.jpg', 'Admin1', 1, '2020-09-17', '2147483647', '03301234567', '03301234567', 'nil', 'fazal@abc.com', 'wewweewq', '{\"doc_type\":\"1\",\"doc_type2\":\"0\",\"doc_type3\":\"2\"}', '{\"expire_date\":\"2020-09-02\",\"expire_date2\":\"2020-09-18\",\"expire_date3\":\"2020-09-01\"}', '{\"doc_type\":\"FPS-3625_(1)7.jpg\",\"doc_type2\":\"fav17.jpg\",\"doc_type3\":\"FPS-3625_(1)8.jpg\"}', '2020-09-16 23:43:39', 0),
+(10, 'WhatsApp_Image_2020-09-16_at_19_23_04.jpeg', 'SDjdsu', 0, '1992-04-12', '1234.3342-2', '565444', '', 'fhfhf', 'fgfgdfg', 'Employee Address', '{\"doc_type\":\"2\",\"doc_type2\":\"0\",\"doc_type3\":\"0\"}', '{\"expire_date\":\"2020-11-06\",\"expire_date2\":\"\",\"expire_date3\":\"\"}', '{\"doc_type\":\"unnamed.jpg\",\"doc_type2\":null,\"doc_type3\":null}', '2020-09-19 00:37:01', 0),
+(12, '22-12.jpg', 'Waqas Hussain', 0, '2020-09-10', '12345678121', '3312480074', '51222222', 'Yes', 'email@gmail.com', 'Employee Address', '{\"doc_type\":\"1\",\"doc_type2\":\"0\",\"doc_type3\":\"0\"}', '{\"expire_date\":\"2020-09-22\",\"expire_date2\":\"\",\"expire_date3\":\"\"}', '{\"doc_type\":\"Capture.jpg\",\"doc_type2\":null,\"doc_type3\":null}', '2020-09-24 21:55:27', 0),
+(13, '22-121.jpg', 'Waqas Hussain', 0, '2020-09-10', '12345678121', '3312480074', '51222222', 'Yes', 'email@gmail.com', 'Employee Address', '{\"doc_type\":\"1\",\"doc_type2\":\"1\",\"doc_type3\":\"1\"}', '{\"expire_date\":\"2020-09-22\",\"expire_date2\":\"2020-09-29\",\"expire_date3\":\"2020-09-23\"}', '{\"doc_type\":\"Capture1.jpg\",\"doc_type2\":\"22-122.jpg\",\"doc_type3\":\"22-123.jpg\"}', '2020-09-24 21:56:17', 0),
+(15, '<p>The filetype you are attempting to upload is not allowed.</p>', 'Juan Salgado', 0, '2020-02-05', '1.244.435-5', '3324343', '', '', '', 'Employee Address', '{\"doc_type\":\"0\",\"doc_type2\":\"0\",\"doc_type3\":\"0\"}', '{\"expire_date\":\"\",\"expire_date2\":\"\",\"expire_date3\":\"\"}', '{\"doc_type\":\"<p>The filetype you are attempting to upload is not allowed.</p><p>You did not select a file to upload.</p>\",\"doc_type2\":\"<p>The filetype you are attempting to upload is not allowed.</p><p>You did not select a file to upload.</p><p>You did no', '2020-09-25 01:18:29', 0),
+(16, 'Yo.jpg', 'Lucas Martino', 0, '1995-01-18', '46587618', '098539250', '', 'Summum', 'lucas@gmail.com', 'Employee Address', '{\"doc_type\":\"0\",\"doc_type2\":\"0\",\"doc_type3\":\"0\"}', '{\"expire_date\":\"\",\"expire_date2\":\"\",\"expire_date3\":\"\"}', '{\"doc_type\":\"<p>You did not select a file to upload.</p>\",\"doc_type2\":\"<p>You did not select a file to upload.</p><p>You did not select a file to upload.</p>\",\"doc_type3\":\"<p>You did not select a file to upload.</p><p>You did not select a file to upload.<', '2020-09-25 03:32:13', 0),
+(17, '<p>You did not select a file to upload.</p>', 'Carlos Villegas', 0, '1994-05-04', '343.3423-3', '9347328', '', '', '', 'Employee Address', '{\"doc_type\":\"0\",\"doc_type2\":\"0\",\"doc_type3\":\"0\"}', '{\"expire_date\":\"\",\"expire_date2\":\"\",\"expire_date3\":\"\"}', '{\"doc_type\":\"<p>You did not select a file to upload.</p><p>You did not select a file to upload.</p>\",\"doc_type2\":\"<p>You did not select a file to upload.</p><p>You did not select a file to upload.</p><p>You did not select a file to upload.</p>\",\"doc_type3', '2020-09-25 03:53:57', 0),
+(18, 'ig_23_marce_sentado.jpg', 'Marce Pombo', 0, '1994-05-13', '15', '098143804', '9084501', 'Española', 'lowinger@pombo.uy', 'Juan Benito Blanco ', '{\"doc_type\":\"0\",\"doc_type2\":\"0\",\"doc_type3\":\"0\"}', '{\"expire_date\":\"0021-12-12\",\"expire_date2\":\"\",\"expire_date3\":\"\"}', '{\"doc_type\":\"2.jpg\",\"doc_type2\":\"<p>You did not select a file to upload.</p>\",\"doc_type3\":\"<p>You did not select a file to upload.</p><p>You did not select a file to upload.</p>\"}', '2020-09-26 00:46:32', 0);
 
 -- --------------------------------------------------------
 
@@ -402,6 +425,7 @@ INSERT INTO `employee1` (`id`, `profile_pic`, `full_name`, `sex`, `dob`, `id_no`
 
 CREATE TABLE `extras` (
   `id` int(11) NOT NULL,
+  `extra_category` varchar(55) NOT NULL,
   `extra_name` varchar(100) NOT NULL,
   `currency` tinyint(1) NOT NULL,
   `unit_price` varchar(11) NOT NULL,
@@ -413,8 +437,12 @@ CREATE TABLE `extras` (
 -- Dumping data for table `extras`
 --
 
-INSERT INTO `extras` (`id`, `extra_name`, `currency`, `unit_price`, `created_at`, `deleted_at`) VALUES
-(3, 'abc', 1, '60', '2020-09-16 18:51:27', '2020-09-16 18:51:15');
+INSERT INTO `extras` (`id`, `extra_category`, `extra_name`, `currency`, `unit_price`, `created_at`, `deleted_at`) VALUES
+(4, '1', 'Coca de 600 ml', 1, '3', '2020-09-25 21:06:02', '2020-09-16 23:44:38'),
+(5, '2', 'Agua', 0, '45', '2020-09-25 21:06:05', '2020-09-17 00:07:43'),
+(7, '1', 'Coca', 0, 'qwhj', '2020-09-25 21:06:11', '2020-09-18 22:14:22'),
+(12, '2', 'Cafe', 0, '230', '2020-09-25 22:04:43', '2020-09-25 22:04:04'),
+(14, '0', 'Falopa', 0, '300', '2020-09-25 22:38:55', '2020-09-25 22:38:55');
 
 -- --------------------------------------------------------
 
@@ -437,8 +465,15 @@ INSERT INTO `group_permission` (`group_id`, `perm_id`) VALUES
 (2, 1),
 (3, 4),
 (3, 3),
+(5, 6),
+(5, 2),
+(5, 4),
+(5, 3),
+(5, 5),
+(5, 1),
 (4, 2),
-(4, 5),
+(4, 3),
+(4, 1),
 (1, 6),
 (1, 2),
 (1, 4),
@@ -466,15 +501,11 @@ INSERT INTO `group_sub_blocklist` (`group_id`, `perm_id`, `sub_perm_id`) VALUES
 (2, 2, 6),
 (2, 1, 1),
 (2, 1, 3),
+(4, 2, 6),
+(4, 3, 8),
+(4, 3, 9),
 (1, 6, 17),
-(1, 6, 18),
-(1, 2, 6),
-(1, 4, 10),
-(1, 4, 12),
-(1, 3, 7),
-(1, 3, 8),
-(1, 5, 15),
-(1, 1, 2);
+(1, 6, 18);
 
 -- --------------------------------------------------------
 
@@ -512,7 +543,14 @@ CREATE TABLE `guest` (
 --
 
 INSERT INTO `guest` (`id`, `name`, `surname`, `sex`, `dob`, `marital_status`, `nationality`, `document_type`, `number`, `country`, `city`, `address`, `telephone`, `telephone2`, `mail`, `company`, `position`, `vehicle`, `registration`, `observations`, `creation_date`, `deleted`) VALUES
-(1, 'fazal', 'rehman', 1, '2020-09-05', 1, 'Pakistan', 1, 789, 'rty', 'lov', 'jkjh', '786', '786', 'frehman1993@outlook.com', 'as', 'sasa', 'sasa', 'sasa', 'kjkjk', '2020-09-16 23:59:56', 0);
+(1, 'fazal', 'rehman', 1, '2020-09-05', 1, 'Pakistan', 1, 789, 'rty', 'lov', 'jkjh', '786', '786', 'frehman1993@outlook.com', 'as', 'sasa', 'sasa', 'sasa', 'kjkjk', '2020-09-16 23:59:56', 0),
+(2, 'Claudio Paul', 'Caniggia', 0, '2012-06-22', 0, 'Argentina', 1, 45806058, 'ARGENTINA', 'BUENOS AIRES', 'OLIVOS 237', '232374', '232374', 'claudiopaul@gmail.com', 'aaa', 'wee', 'FIAT', 'MDU 6238', 'Le gusta dormir al f', '2020-09-17 01:54:41', 0),
+(3, 'Agustina', 'Navarro', 1, '1994-11-15', 1, 'Uruguay', 0, 12345618, 'Uruguay', 'Flores', 'Sabemo 12354', '099842381', '099842381', 'maria@gmail.com', 'Microsoft', 'Software ', 'BMW', 'BMW-1212', '', '2020-09-17 02:10:24', 0),
+(4, 'Mariano', 'Gufella', 0, '1911-11-11', 0, 'Uruguay', 1, 49481115, 'Uruguay', 'Montevideo', 'Ejido 1111', '1452', '', 'd@dad', 'd', 'd', 'd', 'd', '', '2020-09-17 04:48:44', 0),
+(5, 'tgtgt', 'rgegergr', 0, '2020-06-05', 0, 'Brazil', 1, 3442, 'Brunei Darussalam', 'mdeo', 'ee', '2323', '2323', 'rr@dee', 'erer', 'ere', '', '', '', '2020-09-19 00:27:59', 0),
+(6, 'Fernando', 'Muslera', 0, '1998-05-22', 0, 'Argentino ', 0, 4334, 'argentinaere', 'Villa gessell', '', '', '', '', '', '', '', '', '', '2020-09-25 01:35:10', 0),
+(7, 'Lucas', 'Martino', 0, '1995-01-18', 0, 'Uruguay', 0, 46587618, 'Uruguay', 'Montevideo', '123', '123123123', '', 'lucas@gmail.com', 'N/A', 'N/A', 'N/A', 'N/A', '', '2020-09-25 03:36:16', 0),
+(8, 'Juan', 'Carlos', 0, '1999-03-13', 0, 'Uruguay', 0, 1322, 'uruguay', '', '', '', '', '', '', '', '', '', '', '2020-09-25 03:51:34', 0);
 
 -- --------------------------------------------------------
 
@@ -629,11 +667,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `full_name`, `user_name`, `password`, `sector`, `site_login`, `deleted`) VALUES
-(1, 'Admin', 'admin', '12345', 3, 1, 0),
 (2, 'Governor', 'governor', '123', 2, 1, 0),
-(3, 'Reception', 'reception', '123', 2, 1, 0),
-(4, 'Manager', 'manager', '123', 2, 1, 0),
-(5, 'Admin1', 'admin1', '12345', 2, 1, 0);
+(6, 'Mateo', 'mateo', 'peñarol', 2, 1, 0),
+(7, 'Prueba', 'prueba', '12345', 3, 1, 0),
+(9, 'javier2', 'javier2', '12345', 2, 1, 0),
+(11, 'Marcelo Lawin', 'Marce_l', 'marce123', 2, 1, 0),
+(12, 'Javier', 'javier', '12345', 4, 1, 0),
+(13, 'Javier', 'Javitojavier', '12345', 3, 1, 0),
+(14, 'admin', 'admin', '123', 1, 1, 0),
+(15, 'prueba', 'prueba12345', '12345', 1, 1, 0),
+(16, 'Cafu', 'Falopero', 'peñarol', 2, 0, 0),
+(17, 'CAFU FALOPERO', 'CAFU', 'PEÑAROL', 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -723,13 +767,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `employee1`
@@ -741,13 +785,13 @@ ALTER TABLE `employee1`
 -- AUTO_INCREMENT for table `extras`
 --
 ALTER TABLE `extras`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `guest`
 --
 ALTER TABLE `guest`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -765,13 +809,13 @@ ALTER TABLE `subpermissions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
